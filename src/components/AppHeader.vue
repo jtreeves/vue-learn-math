@@ -32,15 +32,18 @@
         display: flex;
         border-bottom: 1px solid #ccc;
         padding: .5rem 1rem;
+        align-items: center;
     }
 
     img {
-        height: 100px;
-        width: 100px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
     }
 
     span {
         margin-left: 1rem;
+        font-size: 50px;
     }
 
     nav {

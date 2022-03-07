@@ -1,27 +1,28 @@
 <template>
     <app-header />
-    <app-footer />
     <router-view />
+    <app-footer />
 </template>
 
-<script lang='ts'>
-    import { defineComponent } from 'vue'
+<script>
     import AppHeader from '@/components/AppHeader.vue'
     import AppFooter from '@/components/AppFooter.vue'
 
-    export default defineComponent({
-        name: 'App',
+    export default {
         components: {
             AppHeader,
             AppFooter
         }
-    })
+    }
 </script>
 
 <style>
     #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
         text-align: center;
         color: #2c3e50;
+    }
+
+    body {
+        font-family: 'Courier New', Courier, monospace;
     }
 </style>
