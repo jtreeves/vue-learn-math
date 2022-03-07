@@ -6,4 +6,14 @@ describe('AppHeader component', () => {
         const wrapper = shallowMount(AppHeader)
         expect(wrapper.text()).toMatch('Learn Math')
     })
+
+    it('should display Home from nav bar', () => {
+        const wrapper = shallowMount(AppHeader)
+        expect(wrapper.text()).toMatch('Home')
+    })
+
+    it('should display About from nav bar', () => {
+        const wrapper = shallowMount(AppHeader)
+        expect(wrapper.text()).toMatch('About')
+    })
 })
