@@ -1,4 +1,4 @@
-# vue-learn-math
+# Learn Math
 
 ## Project setup
 ```
