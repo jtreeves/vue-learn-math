@@ -1,7 +1,8 @@
 import {
     createRouter,
     createWebHashHistory,
-    RouteRecordRaw
+    RouteRecordRaw,
+    Router
 } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
@@ -19,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     }
 ]
 
-const router = createRouter({
+const router: Router = createRouter({
     history: createWebHashHistory(),
     routes
 })
