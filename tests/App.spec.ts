@@ -18,8 +18,8 @@ describe('App component', () => {
         expect(wrapper.text()).toMatch('Home')
     })
 
-    it('should display About from nav bar', () => {
-        expect(wrapper.text()).toMatch('About')
+    it('should display Question from nav bar', () => {
+        expect(wrapper.text()).toMatch('Question')
     })
 
     it('should display copyright symbol in footer', () => {
