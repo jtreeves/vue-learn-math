@@ -4,10 +4,11 @@
         <h2>{{ question }}</h2>
 
         <ul>
-            <li>{{ choices[0] }}</li>
-            <li>{{ choices[1] }}</li>
-            <li>{{ choices[2] }}</li>
-            <li>{{ choices[3] }}</li>
+            <ChoiceButton 
+                v-for="choice in choices"
+                :key="choice"
+                :choice="choice"
+            />
         </ul>
     </main>
 </template>
@@ -21,8 +22,13 @@
         IQuestion
     } from '@/interfaces'
     import generateQuestion from '@/utilities/generateQuestion'
+    import ChoiceButton from '@/elements/ChoiceButton.vue'
 
     export default {
+        components: {
+            ChoiceButton
+        },
+
         setup() {
             const questionSet: IQuestion = generateQuestion(1, 'addition')
 

@@ -1,5 +1,5 @@
 import {
-    shallowMount,
+    mount,
     VueWrapper
 } from '@vue/test-utils'
 import {
@@ -8,7 +8,7 @@ import {
 import QuestionPage from '@/views/QuestionPage.vue'
 
 describe('QuestionPage view', () => {
-    const wrapper: VueWrapper<ComponentPublicInstance> = shallowMount(QuestionPage)
+    const wrapper: VueWrapper<ComponentPublicInstance> = mount(QuestionPage)
 
     it('should display Question header', () => {
         expect(wrapper.text()).toMatch('Question')

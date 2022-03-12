@@ -7,10 +7,10 @@ function generateQuestion(
     level: number,
     type: string
 ): IQuestion {
+    const symbol: string = selectSymbol(type)
     const firstNumber: number = generateNumber(level)
     const secondNumber: number = generateNumber(level)
     const answer: number = generateAnswer(firstNumber, secondNumber, type)
-    const symbol: string = selectSymbol(type)
     const firstIncorrect: number = answer - 1
     const secondIncorrect: number = answer + 1
     const thirdIncorrect: number = answer + 2
