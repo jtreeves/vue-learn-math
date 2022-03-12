@@ -18,6 +18,10 @@ describe('HomePage view', () => {
         expect(wrapper.find('Rubiks Cube')).toBeTruthy()
     })
 
+    it('should display introductory text', () => {
+        expect(wrapper.text()).toMatch('arithmetic skills')
+    })
+
     it('should render 2 button tags', () => {
         expect(wrapper.findAll('button').length).toBe(2)
     })

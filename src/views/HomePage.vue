@@ -7,6 +7,8 @@
             src="@/assets/rubiks.jpg"
         >
 
+        <p>Test your arithmetic skills with this online game.</p>
+
         <PlayButton />
         <InstructionsButton />
     </main>
