@@ -16,10 +16,11 @@
                 (): number => {
                     const now: Date = new Date()
                     const currentYear: number = now.getFullYear()
+                    
                     return currentYear
                 }
             )
-            
+
             return { year }
         }
     }

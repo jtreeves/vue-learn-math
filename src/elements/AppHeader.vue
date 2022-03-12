@@ -56,7 +56,6 @@
     }
 
     ul {
-        list-style: none;
         display: flex;
         gap: 10px;
     }
