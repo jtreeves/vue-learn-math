@@ -22,8 +22,8 @@
                 </li>
 
                 <li>
-                    <router-link to='/about'>
-                        About
+                    <router-link to='/question'>
+                        Question
                     </router-link>
                 </li>
             </ul>
