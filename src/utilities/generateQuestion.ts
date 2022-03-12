@@ -1,38 +1,16 @@
 import { IQuestion } from '@/interfaces'
 import generateNumber from './generateNumber'
+import generateAnswer from './generateAnswer'
+import selectSymbol from './selectSymbol'
 
 function generateQuestion(
     level: number,
     type: string
 ): IQuestion {
-    let symbol: string = ''
-    let answer: number = 0
-
     const firstNumber: number = generateNumber(level)
     const secondNumber: number = generateNumber(level)
-
-    switch (type) {
-        case 'addition':
-            symbol = '+'
-            answer = firstNumber + secondNumber
-            break
-        case 'subtraction':
-            symbol = '-'
-            answer = firstNumber - secondNumber
-            break
-        case 'multiplication':
-            symbol = 'x'
-            answer = firstNumber * secondNumber
-            break
-        case 'division':
-            symbol = '÷'
-            answer = firstNumber / secondNumber
-            break
-        default:
-            symbol = '+'
-            answer = firstNumber + secondNumber
-    }
-
+    const answer: number = generateAnswer(firstNumber, secondNumber, type)
+    const symbol: string = selectSymbol(type)
     const firstIncorrect: number = answer - 1
     const secondIncorrect: number = answer + 1
     const thirdIncorrect: number = answer + 2
