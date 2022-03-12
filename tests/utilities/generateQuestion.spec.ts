@@ -52,15 +52,15 @@ describe('generateQuestion utility', () => {
     it('should return question including times sign if type is multiplication', () => {
         const newQuestion: IQuestion = generateQuestion(2, 'multiplication')
         const questionString: string = newQuestion.question
-        const includesTimes: boolean = questionString.includes('*')
+        const includesTimes: boolean = questionString.includes('x')
 
         expect(includesTimes).toBe(true)
     })
 
-    it('should return question including slash sign if type is division', () => {
+    it('should return question including division sign if type is division', () => {
         const newQuestion: IQuestion = generateQuestion(2, 'division')
         const questionString: string = newQuestion.question
-        const includesSlash: boolean = questionString.includes('/')
+        const includesSlash: boolean = questionString.includes('÷')
 
         expect(includesSlash).toBe(true)
     })

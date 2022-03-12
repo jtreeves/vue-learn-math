@@ -10,7 +10,7 @@ function generateQuestion(
 
     const firstNumber: number = generateNumber(level)
     const secondNumber: number = generateNumber(level)
-    
+
     switch (type) {
         case 'addition':
             symbol = '+'
@@ -21,11 +21,11 @@ function generateQuestion(
             answer = firstNumber - secondNumber
             break
         case 'multiplication':
-            symbol = '*'
+            symbol = 'x'
             answer = firstNumber * secondNumber
             break
         case 'division':
-            symbol = '/'
+            symbol = '÷'
             answer = firstNumber / secondNumber
             break
         default:
