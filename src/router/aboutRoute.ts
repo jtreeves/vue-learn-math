@@ -3,10 +3,10 @@ import {
 } from 'vue-router'
 import AboutPage from '@/views/AboutPage.vue'
 
-const about: RouteRecordRaw = {
+const aboutRoute: RouteRecordRaw = {
     path: '/about',
     name: 'about',
     component: AboutPage
 }
 
-export default about
+export default aboutRoute

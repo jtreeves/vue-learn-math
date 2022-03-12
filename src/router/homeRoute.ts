@@ -3,10 +3,10 @@ import {
 } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 
-const home: RouteRecordRaw = {
+const homeRoute: RouteRecordRaw = {
     path: '/home',
     name: 'home',
     component: HomePage
 }
 
-export default home
+export default homeRoute

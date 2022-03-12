@@ -2,13 +2,13 @@ import {
     RouteRecordRaw
 } from 'vue-router'
 import root from './root'
-import home from './home'
-import about from './about'
+import homeRoute from './homeRoute'
+import aboutRoute from './aboutRoute'
 
 const routes: Array<RouteRecordRaw> = [
     root,
-    home,
-    about
+    homeRoute,
+    aboutRoute
 ]
 
 export default routes
