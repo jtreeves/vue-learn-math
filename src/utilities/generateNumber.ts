@@ -9,7 +9,7 @@ function generateNumber(
     const resultString: string = String(result)
     const resultLength: number = resultString.length
     
-    if (resultLength !== length) {
+    if (resultLength !== length || result === 0) {
         result = generateNumber(length)
     }
 
