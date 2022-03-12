@@ -12,4 +12,4 @@ config.global.plugins = [router]
 
 export default config
 
-// Ran 21 passing tests in 3.253s on 3/11/22
+// Ran 29 passing tests in 3.449s on 3/11/22
