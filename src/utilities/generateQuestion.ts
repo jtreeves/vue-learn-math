@@ -42,7 +42,6 @@ function generateQuestion(
 
     const result: IQuestion = {
         question,
-        answer,
         choices
     }
 

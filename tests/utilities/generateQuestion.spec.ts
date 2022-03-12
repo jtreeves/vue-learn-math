@@ -3,16 +3,15 @@ import generateQuestion from '@/utilities/generateQuestion'
 
 describe('generateQuestion utility', () => {
     const newQuestion: IQuestion = generateQuestion(1, 'addition')
+    const question: string = newQuestion.question
     const choices: number[] = newQuestion.choices
-    const answer: number = newQuestion.answer
 
     it('should be a function', () => {
         expect(typeof generateQuestion).toBe('function')
     })
 
-    it('should return an object with question key of type string, answer key of type number, and choices key of type array', () => {
+    it('should return an object with question key of type string and choices key of type array', () => {
         expect(typeof newQuestion.question).toBe('string')
-        expect(typeof newQuestion.answer).toBe('number')
         expect(Array.isArray(newQuestion.choices)).toBe(true)
     })
 
@@ -23,14 +22,19 @@ describe('generateQuestion utility', () => {
         })
     })
 
-    it('should return an answer matching the first element in its choices array', () => {
+    it('should return answer as first element in its choices array', () => {
+        const questionArray: string[] = question.split(' ')
+        const firstNumber: number = parseInt(questionArray[0])
+        const secondNumber: number = parseInt(questionArray[2])
+        const answer: number = firstNumber + secondNumber
+        
         expect(answer).toBe(choices[0])
     })
 
     it('should return incorrect choices 1 before, 1 after, and 2 after the correct answer', () => {
-        expect(choices[1]).toBe(answer - 1)
-        expect(choices[2]).toBe(answer + 1)
-        expect(choices[3]).toBe(answer + 2)
+        expect(choices[1]).toBe(choices[0] - 1)
+        expect(choices[2]).toBe(choices[0] + 1)
+        expect(choices[3]).toBe(choices[0] + 2)
     })
 
     it('should return question including plus sign if type is addition', () => {

@@ -2,7 +2,6 @@
     <main>
         <h1>Question</h1>
         <h2>{{ question }}</h2>
-        <p>{{ answer }}</p>
 
         <ul>
             <li>{{ choices[0] }}</li>
@@ -35,14 +34,6 @@
                 }
             )
 
-            const answer: ComputedRef<number> = computed(
-                (): number => {
-                    const thisAnswer: number = questionSet.answer
-
-                    return thisAnswer
-                }
-            )
-
             const choices: ComputedRef<number[]> = computed(
                 (): number[] => {
                     const thisChoices: number[] = questionSet.choices
@@ -51,7 +42,7 @@
                 }
             )
             
-            return { question, answer, choices }
+            return { question, choices }
         }
     }
 </script>
