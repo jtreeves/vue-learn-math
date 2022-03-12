@@ -3,14 +3,14 @@ import {
 } from 'vue-router'
 import root from './root'
 import homeRoute from './homeRoute'
-import aboutRoute from './aboutRoute'
 import questionRoute from './questionRoute'
+import instructionsRoute from './instructionsRoute'
 
 const routes: Array<RouteRecordRaw> = [
     root,
     homeRoute,
-    aboutRoute,
-    questionRoute
+    questionRoute,
+    instructionsRoute
 ]
 
 export default routes
