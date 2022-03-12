@@ -3,7 +3,15 @@ function generateNumber(
 ): number {
     const power: number = 10 ** length
     const random: number = Math.random() * power
-    const result: number = Math.floor(random)
+
+    let result: number = Math.floor(random)
+
+    const resultString: string = String(result)
+    const resultLength: number = resultString.length
+    
+    if (resultLength !== length) {
+        result = generateNumber(length)
+    }
 
     return result
 }
