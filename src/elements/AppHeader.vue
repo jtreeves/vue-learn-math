@@ -1,13 +1,13 @@
 <template>
     <header>
-        <router-link to='/home'>
+        <router-link to="/home">
             <img
-                alt='Rubiks Cube'
-                src='@/assets/rubiks.jpg'
+                alt="Rubiks Cube"
+                src="@/assets/rubiks.jpg"
             >
         </router-link>
 
-        <router-link to='/home'>
+        <router-link to="/home">
             <span>
                 Learn Math
             </span>
@@ -16,13 +16,13 @@
         <nav>
             <ul>
                 <li>
-                    <router-link to='/home'>
+                    <router-link to="/home">
                         Home
                     </router-link>
                 </li>
 
                 <li>
-                    <router-link to='/question'>
+                    <router-link to="/question">
                         Question
                     </router-link>
                 </li>

@@ -1,29 +1,35 @@
 <template>
     <li>
-        <button>
-            {{ choice }}
-        </button>
+        <GenericButton 
+            :text="stringChoice"
+            :handleClick="store"
+        />
     </li>
 </template>
 
 <script lang='ts'>
-    export default {
+    import { defineComponent } from 'vue'
+    import GenericButton from './GenericButton.vue'
+
+    export default defineComponent({
+        components: {
+            GenericButton
+        },
+
         props: {
             choice: Number
-        }
-    }
-</script>
+        },
 
-<style scoped>
-    button {
-        width: 200px;
-        height: 50px;
-        padding: 7px 11px;
-        border-radius: 4px;
-        border: none;
-        background-color: darkblue;
-        color: white;
-        cursor: pointer;
-        font-size: 13px;
-    }
-</style>
+        data() {
+            const stringChoice: string = String(this.choice)
+
+            return { stringChoice }
+        },
+
+        methods: {
+            store() {
+                
+            }
+        }
+    })
+</script>

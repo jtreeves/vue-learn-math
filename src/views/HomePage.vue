@@ -3,8 +3,8 @@
         <h1>Home</h1>
 
         <img
-            alt='Rubiks Cube'
-            src='@/assets/rubiks.jpg'
+            alt="Rubiks Cube"
+            src="@/assets/rubiks.jpg"
         >
 
         <PlayButton />

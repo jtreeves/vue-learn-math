@@ -1,13 +1,19 @@
 <template>
-    <button @click="play">
-        Play
-    </button>
+    <GenericButton
+        text="Play"
+        :handleClick="play"
+    />
 </template>
 
 <script lang='ts'>
     import { defineComponent } from 'vue'
+    import GenericButton from './GenericButton.vue'
 
     export default defineComponent({
+        components: {
+            GenericButton
+        },
+
         methods: {
             play() {
                 this.$router.push('/question')
@@ -15,17 +21,3 @@
         }
     })
 </script>
-
-<style scoped>
-    button {
-        width: 200px;
-        height: 50px;
-        padding: 7px 11px;
-        border-radius: 4px;
-        border: none;
-        background-color: darkblue;
-        color: white;
-        cursor: pointer;
-        font-size: 13px;
-    }
-</style>
