@@ -33,3 +33,9 @@
         }
     })
 </script>
+
+<style scoped>
+    li {
+        width: 200px;
+    }
+</style>

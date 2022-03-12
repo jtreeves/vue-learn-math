@@ -8,15 +8,18 @@
         >
 
         <PlayButton />
+        <InstructionsButton />
     </main>
 </template>
 
 <script lang='ts'>
     import PlayButton from '@/elements/PlayButton.vue'
+    import InstructionsButton from '@/elements/InstructionsButton.vue'
 
     export default {
         components: {
-            PlayButton
+            PlayButton,
+            InstructionsButton
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <GenericButton
-        text="Play Game"
-        :handleClick="play"
+        text="Read Instructions"
+        :handleClick="read"
     />
 </template>
 
@@ -15,8 +15,8 @@
         },
 
         methods: {
-            play() {
-                this.$router.push('/question')
+            read() {
+                this.$router.push('/instructions/1')
             }
         }
     })

@@ -14,7 +14,7 @@ describe('PlayButton element', () => {
         expect(wrapper.find('button')).toBeTruthy()
     })
 
-    it('should display word Play', () => {
-        expect(wrapper.text()).toMatch('Play')
+    it('should display text Play Game', () => {
+        expect(wrapper.text()).toMatch('Play Game')
     })
 })

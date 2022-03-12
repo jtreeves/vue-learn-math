@@ -24,5 +24,10 @@
         color: white;
         cursor: pointer;
         font-size: 13px;
+        font: inherit;
+    }
+
+    button:hover {
+        font-weight: bold;
     }
 </style>

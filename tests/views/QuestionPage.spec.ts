@@ -14,11 +14,15 @@ describe('QuestionPage view', () => {
         expect(wrapper.text()).toMatch('Question')
     })
 
-    it('should contain ul tag', () => {
-        expect(wrapper.find('ul')).toBeTruthy()
+    it('should render 1 ol tag', () => {
+        expect(wrapper.findAll('ol').length).toBe(1)
     })
 
-    it('should display 4 li tags', () => {
+    it('should render 4 li tags', () => {
         expect(wrapper.findAll('li').length).toBe(4)
+    })
+
+    it('should render 4 button tags', () => {
+        expect(wrapper.findAll('button').length).toBe(4)
     })
 })

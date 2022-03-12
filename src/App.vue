@@ -37,7 +37,32 @@
 
     ul {
         list-style: none;
+    }
+
+    ul, ol, h1, h2, h3, h4, h5, h6, p {
         margin: 0;
         padding: 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 50px;
+    }
+
+    h1 {
+        line-height: 50px;
+        font-size: 50px;
+        height: 50px;
+    }
+
+    h2 {
+        line-height: 30px;
+        font-size: 30px;
+        height: 30px;
     }
 </style>
