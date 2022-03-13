@@ -1,35 +1,33 @@
 <template>
     <header>
-        <router-link to="/home">
-            <img
-                alt="Rubiks Cube"
-                src="@/assets/rubiks.jpg"
-            >
-        </router-link>
+        <section>
+            <router-link to="/home">
+                <img
+                    alt="Rubiks Cube"
+                    src="@/assets/rubiks.jpg"
+                >
+            </router-link>
 
-        <router-link to="/home">
-            <span>
-                Learn Math
-            </span>
-        </router-link>
+            <router-link to="/home">
+                <span>
+                    Learn Math
+                </span>
+            </router-link>
+        </section>
 
-        <nav>
-            <ul>
-                <li>
-                    <router-link to="/home">
-                        Home
-                    </router-link>
-                </li>
-
-                <li>
-                    <router-link to="/question">
-                        Question
-                    </router-link>
-                </li>
-            </ul>
-        </nav>
+        <ScoreBoard />
     </header>
 </template>
+
+<script lang='ts'>
+    import ScoreBoard from './ScoreBoard.vue'
+
+    export default {
+        components: {
+            ScoreBoard
+        }
+    }
+</script>
 
 <style scoped>
     header {
@@ -39,6 +37,7 @@
         align-items: center;
         height: 100px;
         gap: 20px;
+        justify-content: space-between;
     }
 
     img {
@@ -51,20 +50,9 @@
         font-size: 50px;
     }
 
-    nav {
-        margin-left: auto;
-    }
-
-    ul {
+    section {
         display: flex;
-        gap: 10px;
-    }
-
-    ul li {
-        display: inline-flex;
-    }
-
-    a:hover {
-        font-weight: bold;
+        align-items: center;
+        gap: 30px;
     }
 </style>

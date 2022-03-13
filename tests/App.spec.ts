@@ -28,12 +28,20 @@ describe('App component', () => {
         expect(wrapper.text()).toMatch('Learn Math')
     })
 
-    it('should display Home from nav bar', () => {
-        expect(wrapper.text()).toMatch('Home')
+    it('should display Status from score board', () => {
+        expect(wrapper.text()).toMatch('Status')
     })
 
-    it('should display Question from nav bar', () => {
-        expect(wrapper.text()).toMatch('Question')
+    it('should display Strikes from score board', () => {
+        expect(wrapper.text()).toMatch('Strikes')
+    })
+
+    it('should display Time from score board', () => {
+        expect(wrapper.text()).toMatch('Time')
+    })
+
+    it('should display Score from score board', () => {
+        expect(wrapper.text()).toMatch('Score')
     })
 
     it('should display copyright symbol in footer', () => {
