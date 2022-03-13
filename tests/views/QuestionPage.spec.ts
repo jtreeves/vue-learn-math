@@ -5,7 +5,11 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import router from '@/router'
+import config from '../index'
 import QuestionPage from '@/views/QuestionPage.vue'
+
+config.global.plugins = [router]
 
 describe('QuestionPage view', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = mount(QuestionPage)

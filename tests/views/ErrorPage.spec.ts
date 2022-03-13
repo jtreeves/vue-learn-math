@@ -5,7 +5,11 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import router from '@/router'
+import config from '../index'
 import ErrorPage from '@/views/ErrorPage.vue'
+
+config.global.plugins = [router]
 
 describe('ErrorPage view', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = shallowMount(ErrorPage)

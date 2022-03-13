@@ -5,7 +5,11 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import router from '@/router'
+import config from '../index'
 import InstructionsPage from '@/views/InstructionsPage.vue'
+
+config.global.plugins = [router]
 
 describe('InstructionsPage view', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = shallowMount(InstructionsPage)

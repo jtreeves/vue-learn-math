@@ -5,7 +5,11 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import router from '@/router'
+import config from '../index'
 import HomePage from '@/views/HomePage.vue'
+
+config.global.plugins = [router]
 
 describe('HomePage view', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = mount(HomePage)

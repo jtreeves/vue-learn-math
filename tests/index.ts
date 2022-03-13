@@ -2,14 +2,11 @@ import {
     config,
     RouterLinkStub
 } from '@vue/test-utils'
-import router from '@/router'
 
 config.global.stubs = {
     RouterLink: RouterLinkStub
 }
 
-config.global.plugins = [router]
-
 export default config
 
-// Ran 59 passing tests in 4.484s on 3/12/22
+// Ran 63 passing tests in 4.593s on 3/12/22
