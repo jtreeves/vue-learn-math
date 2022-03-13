@@ -9,4 +9,4 @@ config.global.stubs = {
 
 export default config
 
-// Ran 73 passing tests in 5.169s on 3/12/22
+// Ran 69 passing tests in 3.715s on 3/12/22

@@ -30,11 +30,11 @@ describe('HomePage view', () => {
         expect(wrapper.findAll('button').length).toBe(2)
     })
 
-    it('should render Play Game button', () => {
-        expect(wrapper.text()).toMatch('Play Game')
-    })
-
     it('should render Read Instructions button', () => {
         expect(wrapper.text()).toMatch('Read Instructions')
+    })
+
+    it('should render Play Game button', () => {
+        expect(wrapper.text()).toMatch('Play Game')
     })
 })
