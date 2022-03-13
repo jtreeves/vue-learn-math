@@ -103,4 +103,20 @@ describe('App component', () => {
     
         expect(wrapper.find('h1').text()).toMatch('404')
     })
+
+    it('should display 404 heading when path /instructions/ ends in a number that is not 1, 2, or 3', async () => {
+        const router: Router = createRouter({ 
+            history: createMemoryHistory(),
+            routes
+        })
+        router.push('/instructions/5')
+        await router.isReady()
+        const wrapper: VueWrapper<ComponentPublicInstance> = mount(App, { 
+            global: {
+                plugins: [router]
+            }
+        })
+    
+        expect(wrapper.text()).toMatch('404')
+    })
 })
