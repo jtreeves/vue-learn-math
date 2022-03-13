@@ -14,7 +14,7 @@ import routes from '@/router/routes'
 import App from '@/App.vue'
 
 describe('App component', () => {
-    const router = createRouter({ 
+    const router: Router = createRouter({ 
         history: createMemoryHistory(),
         routes 
     })
