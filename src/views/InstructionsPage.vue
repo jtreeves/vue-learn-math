@@ -12,13 +12,27 @@
 
         <aside>
             <GenericButton 
+                v-if="step === '1'"
+                text="Back Home"
+                :handleClick="goHome"
+            />
+            
+            <GenericButton 
+                v-if="step === '2' || step === '3'"
                 text="Previous Step"
                 :handleClick="loadPrevious"
             />
             
             <GenericButton 
+                v-if="step === '1' || step === '2'"
                 text="Next Step"
                 :handleClick="loadNext"
+            />
+            
+            <GenericButton 
+                v-if="step === '3'"
+                text="Play Game"
+                :handleClick="startGame"
             />
         </aside>
     </main>
@@ -57,6 +71,12 @@
 
                 this.step = previousString
                 this.$router.push(previousRoute)
+            },
+            goHome() {
+                this.$router.push('/home')
+            },
+            startGame() {
+                this.$router.push('/question')
             }
         }
     })
