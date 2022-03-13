@@ -11,10 +11,6 @@ import {
     Router
 } from 'vue-router'
 import routes from '@/router/routes'
-import HomePage from '@/views/HomePage.vue'
-import QuestionPage from '@/views/QuestionPage.vue'
-import InstructionsPage from '@/views/InstructionsPage.vue'
-import ErrorPage from '@/views/ErrorPage.vue'
 import App from '@/App.vue'
 
 describe('App component', () => {
@@ -44,7 +40,7 @@ describe('App component', () => {
         expect(wrapper.text()).toMatch('©')
     })
 
-    it('should render HomePage when path is /home', async () => {
+    it('should display Home heading when path is /home', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -57,10 +53,10 @@ describe('App component', () => {
             }
         })
     
-        expect(wrapper.findComponent(HomePage).exists()).toBe(true)
+        expect(wrapper.find('h1').text()).toMatch('Home')
     })
 
-    it('should render QuestionPage when path is /question', async () => {
+    it('should display Question heading when path is /question', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -73,10 +69,10 @@ describe('App component', () => {
             }
         })
     
-        expect(wrapper.findComponent(QuestionPage).exists()).toBe(true)
+        expect(wrapper.find('h1').text()).toMatch('Question')
     })
 
-    it('should render InstructionsPage when path is /instructions/1', async () => {
+    it('should display Instructions heading when path is /instructions/1', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -89,10 +85,10 @@ describe('App component', () => {
             }
         })
     
-        expect(wrapper.findComponent(InstructionsPage).exists()).toBe(true)
+        expect(wrapper.find('h1').text()).toMatch('Instructions')
     })
 
-    it('should render ErrorPage when path is /error', async () => {
+    it('should display 404 heading when path is /error', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -105,6 +101,6 @@ describe('App component', () => {
             }
         })
     
-        expect(wrapper.findComponent(ErrorPage).exists()).toBe(true)
+        expect(wrapper.find('h1').text()).toMatch('404')
     })
 })
