@@ -10,6 +10,14 @@
                 :choice="choice"
             />
         </ol>
+
+        <button @click="scoreState.setScore(10)">
+            Increase Score By 10
+        </button>
+
+        <button @click="timeState.playTime(false)">
+            Start Countdown Clock
+        </button>
     </main>
 </template>
 
@@ -22,6 +30,10 @@
         IQuestion
     } from '@/interfaces'
     import generateQuestion from '@/utilities/generateQuestion'
+    import scoreState from '@/store/scoreState'
+    import timeState from '@/store/timeState'
+    import statusState from '@/store/statusState'
+    import strikesState from '@/store/strikesState'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
 
     export default {
@@ -47,7 +59,14 @@
                 }
             )
             
-            return { question, choices }
+            return { 
+                question,
+                choices,
+                scoreState,
+                statusState,
+                timeState,
+                strikesState
+            }
         }
     }
 </script>

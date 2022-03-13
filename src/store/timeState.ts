@@ -12,12 +12,14 @@ export default reactive({
     },
     playTime(wasAnswered: boolean) {
         const id: number = setInterval(
-            this.setTime.bind(this), 
+            () => {
+                this.setTime()
+
+                if (this.time === 0 || wasAnswered) {
+                    clearInterval(id)
+                }
+            }, 
             1000
         )
-
-        if (this.time === 0 || wasAnswered) {
-            clearInterval(id)
-        }
     }
 })
