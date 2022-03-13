@@ -13,7 +13,6 @@
         components: {
             GenericButton
         },
-
         methods: {
             play() {
                 this.$router.push('/question')

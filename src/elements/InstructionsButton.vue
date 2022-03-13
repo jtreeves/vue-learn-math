@@ -13,7 +13,6 @@
         components: {
             GenericButton
         },
-
         methods: {
             read() {
                 this.$router.push('/instructions/1')

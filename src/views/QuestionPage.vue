@@ -28,7 +28,6 @@
         components: {
             ChoiceButton
         },
-
         setup() {
             const questionSet: IQuestion = generateQuestion(1, 'addition')
 

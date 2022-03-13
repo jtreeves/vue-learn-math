@@ -15,21 +15,16 @@
         components: {
             GenericButton
         },
-
         props: {
             choice: Number
         },
-
         data() {
             const stringChoice: string = String(this.choice)
 
             return { stringChoice }
         },
-
         methods: {
-            store() {
-                
-            }
+            store() {}
         }
     })
 </script>

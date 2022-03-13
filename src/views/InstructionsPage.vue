@@ -6,7 +6,11 @@
 
         <p>Current step: {{ step }}</p>
 
-        <section>
+        <CurrentInstruction 
+            :step="step"
+        />
+
+        <aside>
             <GenericButton 
                 text="Previous Step"
                 :handleClick="loadPrevious"
@@ -16,25 +20,25 @@
                 text="Next Step"
                 :handleClick="loadNext"
             />
-        </section>
+        </aside>
     </main>
 </template>
 
 <script lang='ts'>
     import { defineComponent } from 'vue'
+    import CurrentInstruction from '@/steps/CurrentInstruction.vue'
     import GenericButton from '@/elements/GenericButton.vue'
 
     export default defineComponent({
         components: {
+            CurrentInstruction,
             GenericButton
         },
-
         data() {
             const step: string = this.$route.params.step as string
 
             return { step }
         },
-
         methods: {
             loadNext() {
                 const currentStep: number = parseInt(this.step)
@@ -45,7 +49,6 @@
                 this.step = nextString
                 this.$router.push(nextRoute)
             },
-
             loadPrevious() {
                 const currentStep: number = parseInt(this.step)
                 const previousStep: number = currentStep - 1
@@ -60,7 +63,7 @@
 </script>
 
 <style scoped>
-    section {
+    aside {
         display: flex;
         flex-direction: row;
         gap: 20px;
