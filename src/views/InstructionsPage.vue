@@ -54,7 +54,7 @@
             return { step }
         },
         methods: {
-            loadNext() {
+            loadNext(): void {
                 const currentStep: number = parseInt(this.step)
                 const nextStep: number = currentStep + 1
                 const nextString: string = String(nextStep)
@@ -63,7 +63,7 @@
                 this.step = nextString
                 this.$router.push(nextRoute)
             },
-            loadPrevious() {
+            loadPrevious(): void {
                 const currentStep: number = parseInt(this.step)
                 const previousStep: number = currentStep - 1
                 const previousString: string = String(previousStep)
@@ -72,10 +72,10 @@
                 this.step = previousString
                 this.$router.push(previousRoute)
             },
-            goHome() {
+            goHome(): void {
                 this.$router.push('/home')
             },
-            startGame() {
+            startGame(): void {
                 this.$router.push('/question')
             }
         }

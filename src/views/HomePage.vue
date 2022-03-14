@@ -32,10 +32,10 @@
             GenericButton
         },
         methods: {
-            play() {
+            play(): void {
                 this.$router.push('/question')
             },
-            read() {
+            read(): void {
                 this.$router.push('/instructions/1')
             }
         }
