@@ -4,9 +4,10 @@
 
         <ol>
             <ChoiceButton 
-                v-for="choice in choices"
+                v-for="choice in shuffledChoices"
                 :key="choice"
                 :choice="choice"
+                :correct="determineCorrect(choice)"
             />
         </ol>
     </section>
@@ -21,6 +22,7 @@
         IQuestion
     } from '@/interfaces'
     import generateQuestion from '@/utilities/generateQuestion'
+    import shuffleChoices from '@/utilities/shuffleChoices'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
 
     export default {
@@ -45,10 +47,23 @@
                     return thisChoices
                 }
             )
+
+            const shuffledChoices: number[] = shuffleChoices(choices.value)
+
+            const determineCorrect = (
+                answer: number
+            ): boolean => {
+                if (choices.value.indexOf(answer) === 0) {
+                    return true
+                } else {
+                    return false
+                }
+            }
             
             return { 
                 question,
-                choices
+                shuffledChoices,
+                determineCorrect
             }
         }
     }
