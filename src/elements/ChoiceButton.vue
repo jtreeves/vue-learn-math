@@ -8,7 +8,11 @@
 </template>
 
 <script lang='ts'>
-    import { defineComponent } from 'vue'
+    import { 
+        defineComponent, 
+        computed, 
+        ComputedRef 
+    } from 'vue'
     import scoreState from '@/store/scoreState'
     import GenericButton from './GenericButton.vue'
 
@@ -21,7 +25,13 @@
             correct: Boolean
         },
         data() {
-            const stringChoice: string = String(this.choice)
+            const stringChoice: ComputedRef<string> = computed(
+                (): string => {
+                    const thisChoice: string = String(this.choice)
+                    
+                    return thisChoice
+                }
+            )
 
             return { stringChoice }
         },
@@ -32,6 +42,7 @@
                 } else {
                     scoreState.setScore(-10)
                 }
+                this.$emit('nextQuestion')
             }
         }
     })

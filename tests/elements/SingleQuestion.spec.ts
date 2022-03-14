@@ -5,10 +5,19 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import { 
+    IQuestion 
+} from '@/interfaces'
+import generateQuestion from '@/utilities/generateQuestion'
 import SingleQuestion from '@/elements/SingleQuestion.vue'
 
 describe('SingleQuestion element', () => {
-    const wrapper: VueWrapper<ComponentPublicInstance> = mount(SingleQuestion)
+    const question: IQuestion = generateQuestion(1, 'addition')
+    const wrapper: VueWrapper<ComponentPublicInstance> = mount(SingleQuestion, {
+        props: {
+            currentQuestion: question
+        }
+    })
 
     it('should render 1 section tag', () => {
         expect(wrapper.findAll('section').length).toEqual(1)

@@ -8,33 +8,32 @@
                 :key="choice"
                 :choice="choice"
                 :correct="determineCorrect(choice)"
+                @nextQuestion="nextQuestion"
             />
         </ol>
     </section>
 </template>
 
 <script lang='ts'>
-    import {
-        computed,
-        ComputedRef
+    import { 
+        defineComponent, 
+        computed, 
+        ComputedRef 
     } from 'vue'
-    import {
-        IQuestion
-    } from '@/interfaces'
-    import generateQuestion from '@/utilities/generateQuestion'
     import shuffleChoices from '@/utilities/shuffleChoices'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
 
-    export default {
+    export default defineComponent({
         components: {
             ChoiceButton
         },
-        setup() {
-            const questionSet: IQuestion = generateQuestion(1, 'addition')
-
+        props: {
+            currentQuestion: Object
+        },
+        data() {
             const question: ComputedRef<string> = computed(
                 (): string => {
-                    const thisQuestion: string = questionSet.question
+                    const thisQuestion: string = this.currentQuestion?.question
                     
                     return thisQuestion
                 }
@@ -42,31 +41,41 @@
 
             const choices: ComputedRef<number[]> = computed(
                 (): number[] => {
-                    const thisChoices: number[] = questionSet.choices
+                    const thisChoices: number[] = this.currentQuestion?.choices
 
                     return thisChoices
                 }
             )
 
-            const shuffledChoices: number[] = shuffleChoices(choices.value)
+            const shuffledChoices: ComputedRef<number[]> = computed(
+                (): number[] => {
+                    const thisChoices: number[] = shuffleChoices(choices.value)
 
-            const determineCorrect = (
+                    return thisChoices
+                }
+            )
+            
+            return { 
+                question,
+                choices,
+                shuffledChoices
+            }
+        },
+        methods: {
+            nextQuestion(): void {
+                this.$emit('nextQuestion')
+            },
+            determineCorrect(
                 answer: number
-            ): boolean => {
-                if (choices.value.indexOf(answer) === 0) {
+            ): boolean {
+                if (this.choices.indexOf(answer) === 0) {
                     return true
                 } else {
                     return false
                 }
             }
-            
-            return { 
-                question,
-                shuffledChoices,
-                determineCorrect
-            }
         }
-    }
+    })
 </script>
 
 <style scoped>
