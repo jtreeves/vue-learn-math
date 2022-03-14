@@ -3,14 +3,6 @@
         <h1>Question</h1>
         
         <SingleQuestion />
-
-        <button @click="scoreState.setScore(10)">
-            Increase Score By 10
-        </button>
-
-        <button @click="timeState.playTime(false)">
-            Start Countdown Clock
-        </button>
     </main>
 </template>
 
