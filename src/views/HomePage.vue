@@ -24,22 +24,34 @@
 </template>
 
 <script lang='ts'>
-    import { defineComponent } from 'vue'
+    import {
+        Router,
+        useRouter
+    } from 'vue-router'
     import GenericButton from '@/elements/GenericButton.vue'
 
-    export default defineComponent({
+    export default {
         components: {
             GenericButton
         },
-        methods: {
-            play(): void {
-                this.$router.push('/question')
-            },
-            read(): void {
-                this.$router.push('/instructions/1')
+
+        setup() {
+            const router: Router = useRouter()
+
+            function play(): void {
+                router.push('/question')
+            }
+
+            function read(): void {
+                router.push('/instructions/1')
+            }
+
+            return {
+                play,
+                read
             }
         }
-    })
+    }
 </script>
 
 <style scoped>

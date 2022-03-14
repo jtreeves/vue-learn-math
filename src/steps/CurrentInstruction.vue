@@ -17,6 +17,7 @@
             SecondInstruction,
             ThirdInstruction
         },
+        
         props: {
             step: String
         }

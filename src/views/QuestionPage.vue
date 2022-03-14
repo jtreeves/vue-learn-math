@@ -4,32 +4,40 @@
         
         <SingleQuestion 
             :currentQuestion="currentQuestion"
-            @nextQuestion="nextQuestion"
+            @nextQuestion="updateQuestion"
         />
     </main>
 </template>
 
 <script lang='ts'>
-    import { defineComponent } from 'vue'
-    import { IQuestion } from '@/interfaces'
+    import { 
+        reactive 
+    } from 'vue'
+    import { 
+        IQuestion 
+    } from '@/interfaces'
     import generateQuestion from '@/utilities/generateQuestion'
     import SingleQuestion from '@/elements/SingleQuestion.vue'
 
-    export default defineComponent({
+    export default {
         components: {
             SingleQuestion
         },
-        data() {
-            const currentQuestion: IQuestion = generateQuestion(1, 'addition')
+
+        setup() {
+            const initialSet: IQuestion = generateQuestion(1, 'addition')
+            const currentQuestion: IQuestion = reactive(initialSet)
+
+            function updateQuestion(): void {
+                const updatedSet: IQuestion = generateQuestion(1, 'addition')
+                currentQuestion.question = updatedSet.question
+                currentQuestion.choices = updatedSet.choices
+            }
 
             return { 
-                currentQuestion
-            }
-        },
-        methods: {
-            nextQuestion() {
-                this.currentQuestion = generateQuestion(1, 'addition')
+                currentQuestion,
+                updateQuestion
             }
         }
-    })
+    }
 </script>

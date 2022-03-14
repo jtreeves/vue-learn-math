@@ -27,13 +27,15 @@
         components: {
             ChoiceButton
         },
+
         props: {
             currentQuestion: Object
         },
-        data() {
+
+        setup(props, context) {
             const question: ComputedRef<string> = computed(
                 (): string => {
-                    const thisQuestion: string = this.currentQuestion?.question
+                    const thisQuestion: string = props.currentQuestion?.question
                     
                     return thisQuestion
                 }
@@ -41,7 +43,7 @@
 
             const choices: ComputedRef<number[]> = computed(
                 (): number[] => {
-                    const thisChoices: number[] = this.currentQuestion?.choices
+                    const thisChoices: number[] = props.currentQuestion?.choices
 
                     return thisChoices
                 }
@@ -54,25 +56,27 @@
                     return thisChoices
                 }
             )
-            
-            return { 
-                question,
-                choices,
-                shuffledChoices
-            }
-        },
-        methods: {
-            nextQuestion(): void {
-                this.$emit('nextQuestion')
-            },
-            determineCorrect(
+
+            function determineCorrect(
                 answer: number
             ): boolean {
-                if (this.choices.indexOf(answer) === 0) {
+                if (choices.value.indexOf(answer) === 0) {
                     return true
                 } else {
                     return false
                 }
+            }
+            
+            function nextQuestion(): void {
+                context.emit('nextQuestion')
+            }
+
+            return { 
+                question,
+                choices,
+                shuffledChoices,
+                determineCorrect,
+                nextQuestion
             }
         }
     })

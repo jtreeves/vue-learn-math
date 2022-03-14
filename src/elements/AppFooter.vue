@@ -5,21 +5,10 @@
 </template>
 
 <script lang='ts'>
-    import {
-        computed,
-        ComputedRef
-    } from 'vue'
-
     export default {
         setup() {
-            const year: ComputedRef<number> = computed(
-                (): number => {
-                    const now: Date = new Date()
-                    const currentYear: number = now.getFullYear()
-                    
-                    return currentYear
-                }
-            )
+            const now: Date = new Date()
+            const year: number = now.getFullYear()
 
             return { year }
         }

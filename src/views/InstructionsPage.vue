@@ -39,47 +39,67 @@
 </template>
 
 <script lang='ts'>
-    import { defineComponent } from 'vue'
+    import {
+        ref, 
+        Ref 
+    } from 'vue'
+    import { 
+        RouteLocationNormalizedLoaded, 
+        Router, 
+        useRoute, 
+        useRouter
+    } from 'vue-router'
     import CurrentInstruction from '@/steps/CurrentInstruction.vue'
     import GenericButton from '@/elements/GenericButton.vue'
 
-    export default defineComponent({
+    export default {
         components: {
             CurrentInstruction,
             GenericButton
         },
-        data() {
-            const step: string = this.$route.params.step as string
 
-            return { step }
-        },
-        methods: {
-            loadNext(): void {
-                const currentStep: number = parseInt(this.step)
+        setup() {
+            const route: RouteLocationNormalizedLoaded = useRoute()
+            const router: Router = useRouter()
+            const step: Ref<string> = ref(String(route.params.step))
+
+            function loadNext(): void {
+                const currentStep: number = parseInt(step.value)
                 const nextStep: number = currentStep + 1
                 const nextString: string = String(nextStep)
                 const nextRoute: string = '/instructions/' + nextString
 
-                this.step = nextString
-                this.$router.push(nextRoute)
-            },
-            loadPrevious(): void {
-                const currentStep: number = parseInt(this.step)
+                step.value = nextString
+                router.push(nextRoute)
+            }
+
+            function loadPrevious(): void {
+                const currentStep: number = parseInt(step.value)
                 const previousStep: number = currentStep - 1
                 const previousString: string = String(previousStep)
                 const previousRoute: string = '/instructions/' + previousString
 
-                this.step = previousString
-                this.$router.push(previousRoute)
-            },
-            goHome(): void {
-                this.$router.push('/home')
-            },
-            startGame(): void {
-                this.$router.push('/question')
+                step.value = previousString
+                router.push(previousRoute)
+            }
+
+            function goHome(): void {
+                router.push('/home')
+            }
+
+            function startGame(): void {
+                router.push('/question')
+            }
+
+            return { 
+                step,
+                loadNext,
+                loadPrevious,
+                goHome,
+                startGame
             }
         }
-    })
+    }
 </script>
 
 <style scoped>

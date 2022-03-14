@@ -8,8 +8,8 @@
 </template>
 
 <script lang='ts'>
-    import { 
-        defineComponent, 
+    import {
+        defineComponent,
         computed, 
         ComputedRef 
     } from 'vue'
@@ -20,29 +20,33 @@
         components: {
             GenericButton
         },
+
         props: {
             choice: Number,
             correct: Boolean
         },
-        data() {
+
+        setup(props, context) {
             const stringChoice: ComputedRef<string> = computed(
                 (): string => {
-                    const thisChoice: string = String(this.choice)
+                    const thisChoice: string = String(props.choice)
                     
                     return thisChoice
                 }
             )
 
-            return { stringChoice }
-        },
-        methods: {
-            grade(): void {
-                if (this.correct) {
+            function grade(): void {
+                if (props.correct) {
                     scoreState.setScore(10)
                 } else {
                     scoreState.setScore(-10)
                 }
-                this.$emit('nextQuestion')
+                context.emit('nextQuestion')
+            }
+
+            return { 
+                stringChoice,
+                grade
             }
         }
     })
