@@ -19,14 +19,8 @@
     </header>
 </template>
 
-<script lang='ts'>
+<script setup lang='ts'>
     import ScoreBoard from './ScoreBoard.vue'
-
-    export default {
-        components: {
-            ScoreBoard
-        }
-    }
 </script>
 
 <style scoped>

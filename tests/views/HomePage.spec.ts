@@ -26,6 +26,14 @@ describe('HomePage view', () => {
         expect(wrapper.text()).toMatch('arithmetic skills')
     })
 
+    it('should render 1 main tag', () => {
+        expect(wrapper.findAll('main').length).toBe(1)
+    })
+
+    it('should render 1 aside tag', () => {
+        expect(wrapper.findAll('aside').length).toBe(1)
+    })
+
     it('should render 2 button tags', () => {
         expect(wrapper.findAll('button').length).toBe(2)
     })

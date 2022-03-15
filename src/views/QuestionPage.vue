@@ -1,43 +1,50 @@
 <template>
     <main>
         <h1>Question</h1>
-        
-        <SingleQuestion 
-            :currentQuestion="currentQuestion"
-            @nextQuestion="updateQuestion"
-        />
+
+        <section>
+            <h2>{{ question }}</h2>
+
+            <ol>
+                <ChoiceButton 
+                    v-for="choice in shuffledChoices"
+                    :key="choice"
+                    :choice="choice"
+                    :correct="determineCorrect(choice)"
+                    @nextQuestion="updateQuestion"
+                />
+            </ol>
+        </section>
     </main>
 </template>
 
-<script lang='ts'>
+<script setup lang='ts'>
     import { 
-        reactive 
-    } from 'vue'
-    import { 
-        IQuestion 
+        QuestionComposable 
     } from '@/interfaces'
-    import generateQuestion from '@/utilities/generateQuestion'
-    import SingleQuestion from '@/elements/SingleQuestion.vue'
-
-    export default {
-        components: {
-            SingleQuestion
-        },
-
-        setup() {
-            const initialSet: IQuestion = generateQuestion(1, 'addition')
-            const currentQuestion: IQuestion = reactive(initialSet)
-
-            function updateQuestion(): void {
-                const updatedSet: IQuestion = generateQuestion(1, 'addition')
-                currentQuestion.question = updatedSet.question
-                currentQuestion.choices = updatedSet.choices
-            }
-
-            return { 
-                currentQuestion,
-                updateQuestion
-            }
-        }
-    }
+    import useQuestion from '@/composables/useQuestion'
+    import ChoiceButton from '@/elements/ChoiceButton.vue'
+    
+    const {
+        question,
+        shuffledChoices,
+        determineCorrect,
+        updateQuestion
+    }: QuestionComposable = useQuestion()
 </script>
+
+<style scoped>
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    ol {
+        list-style-type: upper-latin;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+</style>

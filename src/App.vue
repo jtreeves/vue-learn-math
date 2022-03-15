@@ -4,16 +4,9 @@
     <AppFooter />
 </template>
 
-<script lang='ts'>
+<script setup lang='ts'>
     import AppHeader from '@/elements/AppHeader.vue'
     import AppFooter from '@/elements/AppFooter.vue'
-
-    export default {
-        components: {
-            AppHeader,
-            AppFooter
-        }
-    }
 </script>
 
 <style>
@@ -35,11 +28,7 @@
         color: inherit;
     }
 
-    ul {
-        list-style: none;
-    }
-
-    ul, ol, h1, h2, h3, h4, h5, h6, p {
+    ol, h1, h2, h3, h4, h5, h6, p {
         margin: 0;
         padding: 0;
         margin-block-start: 0;

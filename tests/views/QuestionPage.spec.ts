@@ -18,6 +18,14 @@ describe('QuestionPage view', () => {
         expect(wrapper.text()).toMatch('Question')
     })
 
+    it('should render 1 main tag', () => {
+        expect(wrapper.findAll('main').length).toBe(1)
+    })
+
+    it('should render 1 section tag', () => {
+        expect(wrapper.findAll('section').length).toBe(1)
+    })
+
     it('should render 1 ol tag', () => {
         expect(wrapper.findAll('ol').length).toBe(1)
     })

@@ -1,8 +1,38 @@
+import {
+    Ref
+} from 'vue'
+
 interface IQuestion {
-    question: string,
+    question: string
     choices: number[]
 }
 
+interface IVoidFunction {
+    (): void
+}
+
+interface INumberBooleanFunction {
+    (answer: number): boolean
+}
+
+interface QuestionComposable {
+    question: Ref<string>
+    choices: Ref<number[]>
+    shuffledChoices: Ref<number[]>
+    determineCorrect: INumberBooleanFunction
+    updateQuestion: IVoidFunction
+}
+
+interface InstructionsComposable {
+    step: Ref<string>
+    loadNext: IVoidFunction
+    loadPrevious: IVoidFunction
+    goHome: IVoidFunction
+    startGame: IVoidFunction
+}
+
 export type {
-    IQuestion
+    IQuestion,
+    QuestionComposable,
+    InstructionsComposable
 }

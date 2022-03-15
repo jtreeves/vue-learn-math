@@ -4,15 +4,9 @@
     </footer>
 </template>
 
-<script lang='ts'>
-    export default {
-        setup() {
-            const now: Date = new Date()
-            const year: number = now.getFullYear()
-
-            return { year }
-        }
-    }
+<script setup lang='ts'>
+    const now: Date = new Date()
+    const year: number = now.getFullYear()
 </script>
 
 <style scoped>

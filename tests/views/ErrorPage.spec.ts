@@ -14,6 +14,10 @@ config.global.plugins = [router]
 describe('ErrorPage view', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = shallowMount(ErrorPage)
 
+    it('should render 1 main tag', () => {
+        expect(wrapper.findAll('main').length).toBe(1)
+    })
+
     it('should display 404 header', () => {
         expect(wrapper.text()).toMatch('404')
     })

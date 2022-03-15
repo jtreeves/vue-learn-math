@@ -33,6 +33,14 @@ describe('InstructionsPage view', () => {
         expect(wrapper.text()).toMatch('how to play the game')
     })
 
+    it('should render 1 main tag', () => {
+        expect(wrapper.findAll('main').length).toBe(1)
+    })
+
+    it('should render 1 aside tag', () => {
+        expect(wrapper.findAll('aside').length).toBe(1)
+    })
+
     it('should display first set of instructions, home button, and next button when path is /instructions/1', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
@@ -47,7 +55,7 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('section').text()).toMatch('First set of instructions.')
+        expect(wrapper.find('article').text()).toMatch('First set of instructions.')
         expect(buttons[0].text()).toMatch('Back Home')
         expect(buttons[1].text()).toMatch('Next Step')
     })
@@ -66,7 +74,7 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('section').text()).toMatch('Second set of instructions.')
+        expect(wrapper.find('article').text()).toMatch('Second set of instructions.')
         expect(buttons[0].text()).toMatch('Previous Step')
         expect(buttons[1].text()).toMatch('Next Step')
     })
@@ -85,7 +93,7 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('section').text()).toMatch('Third set of instructions.')
+        expect(wrapper.find('article').text()).toMatch('Third set of instructions.')
         expect(buttons[0].text()).toMatch('Previous Step')
         expect(buttons[1].text()).toMatch('Play Game')
     })

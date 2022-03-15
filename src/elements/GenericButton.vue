@@ -1,16 +1,18 @@
 <template>
-    <button @click="handleClick">
-        {{ text }}
+    <button @click="props.handleClick">
+        {{ props.text }}
     </button>
 </template>
 
-<script lang='ts'>
-    export default {
-        props: {
-            text: String,
-            handleClick: Function
-        }
-    }
+<script setup lang='ts'>
+    import { 
+        ExtractedProps 
+    } from '@/types'
+
+    const props: ExtractedProps = defineProps({
+        text: String,
+        handleClick: Function
+    })
 </script>
 
 <style scoped>

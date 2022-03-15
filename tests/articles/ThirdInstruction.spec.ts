@@ -7,7 +7,7 @@ import {
 } from 'vue'
 import router from '@/router'
 import config from '../index'
-import ThirdInstruction from '@/steps/ThirdInstruction.vue'
+import ThirdInstruction from '@/articles/ThirdInstruction.vue'
 
 config.global.plugins = [router]
 

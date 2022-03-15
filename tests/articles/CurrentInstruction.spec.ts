@@ -7,19 +7,19 @@ import {
 } from 'vue'
 import router from '@/router'
 import config from '../index'
-import CurrentInstruction from '@/steps/CurrentInstruction.vue'
+import CurrentInstruction from '@/articles/CurrentInstruction.vue'
 
 config.global.plugins = [router]
 
 describe('CurrentInstruction step', () => {
-    it('should render 1 section tag', () => {
+    it('should render 1 article tag', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
                 step: '1'
             }
         })
     
-        expect(wrapper.findAll('section').length).toBe(1)
+        expect(wrapper.findAll('article').length).toBe(1)
     })
     
     it('should display first set of instructions when step prop is 1', () => {

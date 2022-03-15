@@ -18,20 +18,9 @@
     </section>
 </template>
 
-<script lang='ts'>
+<script setup lang='ts'>
     import scoreState from '@/store/scoreState'
     import timeState from '@/store/timeState'
     import strikesState from '@/store/strikesState'
     import statusState from '@/store/statusState'
-
-    export default {
-        setup() {
-            return {
-                scoreState,
-                timeState,
-                strikesState,
-                statusState
-            }
-        }
-    }
 </script>
