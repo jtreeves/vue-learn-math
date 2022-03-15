@@ -7,7 +7,7 @@
 
             <ol>
                 <ChoiceButton 
-                    v-for="choice in shuffledChoices"
+                    v-for="choice in choices"
                     :key="choice"
                     :choice="choice"
                     :correct="determineCorrect(choice)"
@@ -27,7 +27,7 @@
     
     const {
         question,
-        shuffledChoices,
+        choices,
         determineCorrect,
         updateQuestion
     }: QuestionComposable = useQuestion()

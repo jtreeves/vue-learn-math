@@ -36,8 +36,7 @@ function useQuestions(): QuestionComposable {
 
     return { 
         question,
-        choices,
-        shuffledChoices,
+        choices: shuffledChoices,
         determineCorrect,
         updateQuestion
     }

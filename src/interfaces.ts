@@ -18,7 +18,6 @@ interface INumberBooleanFunction {
 interface QuestionComposable {
     question: Ref<string>
     choices: Ref<number[]>
-    shuffledChoices: Ref<number[]>
     determineCorrect: INumberBooleanFunction
     updateQuestion: IVoidFunction
 }

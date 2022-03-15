@@ -6,7 +6,7 @@
 
 <script setup lang='ts'>
     import { 
-        ExtractedProps 
+        ExtractedProps
     } from '@/types'
 
     const props: ExtractedProps = defineProps({

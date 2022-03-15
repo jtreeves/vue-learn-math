@@ -27,15 +27,6 @@ describe('useQuestion composable', () => {
        })
     })
 
-    it('should provide an object called shuffledChoices with a value of type number array as a property on the returned object', () => {
-       expect(composable).toHaveProperty('shuffledChoices')
-       expect(typeof composable.shuffledChoices).toBe('object')
-       expect(Array.isArray(composable.shuffledChoices.value)).toBe(true)
-       composable.shuffledChoices.value.forEach(choice => {
-           expect(typeof choice).toBe('number')
-       })
-    })
-
     it('should provide a function called determineCorrect as a property on the returned object', () => {
        expect(composable).toHaveProperty('determineCorrect')
        expect(typeof composable.determineCorrect).toBe('function')
