@@ -13,43 +13,31 @@ import {
 } from '@/interfaces'
 
 function useInstructions(): InstructionsComposable {
-    const route: RouteLocationNormalizedLoaded = useRoute()
     const router: Router = useRouter()
-    const step: Ref<string> = ref(String(route.params.step))
-    const currentStep: number = parseInt(step.value)
+    const route: RouteLocationNormalizedLoaded = useRoute()
+    const currentStep: string = String(route.params.step)
+    const step: Ref<number> = ref(parseInt(currentStep))
 
     function loadNext(): void {
-        const nextStep: number = currentStep + 1
-        const nextString: string = String(nextStep)
-        const nextRoute: string = '/instructions/' + nextString
+        const nextStep: number = step.value + 1
+        const nextRoute: string = '/instructions/' + nextStep
 
-        step.value = nextString
+        step.value = nextStep
         router.push(nextRoute)
     }
 
     function loadPrevious(): void {
-        const previousStep: number = currentStep - 1
-        const previousString: string = String(previousStep)
-        const previousRoute: string = '/instructions/' + previousString
+        const previousStep: number = step.value - 1
+        const previousRoute: string = '/instructions/' + previousStep
 
-        step.value = previousString
+        step.value = previousStep
         router.push(previousRoute)
-    }
-
-    function goHome(): void {
-        router.push('/home')
-    }
-
-    function startGame(): void {
-        router.push('/question')
     }
 
     return { 
         step,
         loadNext,
-        loadPrevious,
-        goHome,
-        startGame
+        loadPrevious
     }
 }
 
