@@ -12,12 +12,12 @@
         <aside>
             <GenericButton
                 text="Read Instructions"
-                :handleClick="read"
+                :handleClick="readInstructions"
             />
 
             <GenericButton
                 text="Play Game"
-                :handleClick="play"
+                :handleClick="playGame"
             />
         </aside>
     </main>
@@ -25,20 +25,15 @@
 
 <script setup lang='ts'>
     import {
-        Router,
-        useRouter
-    } from 'vue-router'
+        LandingPagesComposable
+    } from '@/interfaces'
+    import useLandingPages from '@/composables/useLandingPages'
     import GenericButton from '@/elements/GenericButton.vue'
 
-    const router: Router = useRouter()
-
-    function play(): void {
-        router.push('/question')
-    }
-
-    function read(): void {
-        router.push('/instructions/1')
-    }
+    const {
+        playGame,
+        readInstructions
+    }: LandingPagesComposable = useLandingPages()
 </script>
 
 <style scoped>

@@ -1,16 +1,13 @@
 <template>
     <li>
         <GenericButton 
-            :text="stringChoice"
+            :text="props.choice.toString()"
             :handleClick="grade"
         />
     </li>
 </template>
 
 <script setup lang='ts'>
-    import {
-        computed
-    } from 'vue'
     import scoreState from '@/store/scoreState'
     import GenericButton from './GenericButton.vue'
 
@@ -22,14 +19,6 @@
     const emits = defineEmits<{
         (event: 'nextQuestion'): void
     }>()
-
-    const stringChoice = computed<string>(
-        (): string => {
-            const thisChoice: string = String(props.choice)
-            
-            return thisChoice
-        }
-    )
 
     function grade(): void {
         if (props.correct) {

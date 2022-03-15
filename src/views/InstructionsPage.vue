@@ -12,27 +12,27 @@
 
         <aside>
             <GenericButton 
-                v-if="step === '1'"
+                v-if="step === 1"
                 text="Back Home"
                 :handleClick="goHome"
             />
             
             <GenericButton 
-                v-if="step === '2' || step === '3'"
+                v-if="step === 2 || step === 3"
                 text="Previous Step"
                 :handleClick="loadPrevious"
             />
             
             <GenericButton 
-                v-if="step === '1' || step === '2'"
+                v-if="step === 1 || step === 2"
                 text="Next Step"
                 :handleClick="loadNext"
             />
             
             <GenericButton 
-                v-if="step === '3'"
+                v-if="step === 3"
                 text="Play Game"
-                :handleClick="startGame"
+                :handleClick="playGame"
             />
         </aside>
     </main>
@@ -40,19 +40,24 @@
 
 <script setup lang='ts'>
     import { 
-        InstructionsComposable 
+        InstructionsComposable,
+        LandingPagesComposable
     } from '@/interfaces'
     import useInstructions from '@/composables/useInstructions'
+    import useLandingPages from '@/composables/useLandingPages'
     import GenericButton from '@/elements/GenericButton.vue'
     import CurrentInstruction from '@/articles/CurrentInstruction.vue'
     
     const {
         step,
         loadNext,
-        loadPrevious,
-        goHome,
-        startGame
+        loadPrevious
     }: InstructionsComposable = useInstructions()
+
+    const {
+        goHome,
+        playGame
+    }: LandingPagesComposable = useLandingPages()
 </script>
 
 <style scoped>

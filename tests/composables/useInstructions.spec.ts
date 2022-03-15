@@ -13,10 +13,10 @@ describe('useInstructions composable', () => {
        expect(typeof composable).toBe('object')
     })
 
-    it('should provide an object called step with a value of type string as a property on the returned object', () => {
+    it('should provide an object called step with a value of type number as a property on the returned object', () => {
        expect(composable).toHaveProperty('step')
        expect(typeof composable.step).toBe('object')
-       expect(typeof composable.step.value).toBe('string')
+       expect(typeof composable.step.value).toBe('number')
     })
 
     it('should provide a function called loadNext as a property on the returned object', () => {
@@ -27,15 +27,5 @@ describe('useInstructions composable', () => {
     it('should provide a function called loadPrevious as a property on the returned object', () => {
        expect(composable).toHaveProperty('loadPrevious')
        expect(typeof composable.loadPrevious).toBe('function')
-    })
-
-    it('should provide a function called goHome as a property on the returned object', () => {
-       expect(composable).toHaveProperty('goHome')
-       expect(typeof composable.goHome).toBe('function')
-    })
-
-    it('should provide a function called startGame as a property on the returned object', () => {
-       expect(composable).toHaveProperty('startGame')
-       expect(typeof composable.startGame).toBe('function')
     })
 })

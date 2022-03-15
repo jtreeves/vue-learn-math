@@ -23,15 +23,20 @@ interface QuestionComposable {
 }
 
 interface InstructionsComposable {
-    step: Ref<string>
+    step: Ref<number>
     loadNext: IVoidFunction
     loadPrevious: IVoidFunction
+}
+
+interface LandingPagesComposable {
     goHome: IVoidFunction
-    startGame: IVoidFunction
+    playGame: IVoidFunction
+    readInstructions: IVoidFunction
 }
 
 export type {
     IQuestion,
     QuestionComposable,
-    InstructionsComposable
+    InstructionsComposable,
+    LandingPagesComposable
 }

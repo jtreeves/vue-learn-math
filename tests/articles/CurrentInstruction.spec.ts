@@ -15,7 +15,7 @@ describe('CurrentInstruction step', () => {
     it('should render 1 article tag', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
-                step: '1'
+                step: 1
             }
         })
     
@@ -25,7 +25,7 @@ describe('CurrentInstruction step', () => {
     it('should display first set of instructions when step prop is 1', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
-                step: '1'
+                step: 1
             }
         })
     
@@ -35,7 +35,7 @@ describe('CurrentInstruction step', () => {
     it('should display second set of instructions when step prop is 2', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
-                step: '2'
+                step: 2
             }
         })
     
@@ -45,7 +45,7 @@ describe('CurrentInstruction step', () => {
     it('should display third set of instructions when step prop is 3', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
-                step: '3'
+                step: 3
             }
         })
     
