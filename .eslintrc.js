@@ -19,7 +19,8 @@ module.exports = {
         'space-before-function-paren': 0,
         'no-trailing-spaces': 0,
         '@typescript-eslint/no-inferrable-types': 0,
-        '@typescript-eslint/no-explicit-any': 0
+        '@typescript-eslint/no-explicit-any': 0,
+        'func-call-spacing': 0
     },
     overrides: [
         {

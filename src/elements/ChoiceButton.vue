@@ -9,24 +9,21 @@
 
 <script setup lang='ts'>
     import {
-        computed, 
-        ComputedRef
+        computed
     } from 'vue'
-    import {
-        ExtractedProps,
-        Emitter
-    } from '@/types'
     import scoreState from '@/store/scoreState'
     import GenericButton from './GenericButton.vue'
 
-    const props: ExtractedProps = defineProps({
-        choice: Number,
-        correct: Boolean
-    })
+    const props = defineProps<{
+        choice: number
+        correct: boolean
+    }>()
 
-    const emits: Emitter = defineEmits(['nextQuestion'])
+    const emits = defineEmits<{
+        (event: 'nextQuestion'): void
+    }>()
 
-    const stringChoice: ComputedRef<string> = computed(
+    const stringChoice = computed<string>(
         (): string => {
             const thisChoice: string = String(props.choice)
             

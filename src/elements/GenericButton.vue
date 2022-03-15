@@ -5,14 +5,10 @@
 </template>
 
 <script setup lang='ts'>
-    import { 
-        ExtractedProps
-    } from '@/types'
-
-    const props: ExtractedProps = defineProps({
-        text: String,
-        handleClick: Function
-    })
+    const props = defineProps<{
+        text: string
+        handleClick: () => void
+    }>()
 </script>
 
 <style scoped>
