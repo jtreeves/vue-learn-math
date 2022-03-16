@@ -1,8 +1,11 @@
 import {
     reactive
 } from 'vue'
+import {
+    IStrikes
+} from '@/interfaces'
 
-export default reactive({
+export default reactive(<IStrikes>{
     strikes: 0,
     setStrikes() {
         this.strikes++

@@ -1,8 +1,11 @@
 import {
     reactive
 } from 'vue'
+import {
+    IStatus
+} from '@/interfaces'
 
-export default reactive({
+export default reactive(<IStatus>{
     status: true,
     hasWon: false,
     hasLost: false,
