@@ -1,13 +1,18 @@
+import {
+    Ref
+} from 'vue'
 import timeState from '@/store/timeState'
 
 function playTime(
-    wasAnswered: boolean
+    wasAnswered: Ref<boolean>
 ): void {
+    timeState.resetTime()
+
     const id: number = setInterval(
         () => {
             timeState.setTime()
 
-            if (timeState.time === 0 || wasAnswered) {
+            if (timeState.time === 0 || wasAnswered.value) {
                 clearInterval(id)
             }
         }, 
