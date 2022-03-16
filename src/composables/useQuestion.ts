@@ -39,7 +39,10 @@ function useQuestion(): QuestionComposable {
         level.value = 1
         type.value = 'addition'
         
-        const updatedSet: IQuestion = generateQuestion(1, 'addition')
+        const updatedSet: IQuestion = generateQuestion(
+            level.value, 
+            type.value
+        )
         
         question.value = updatedSet.question
         choices.value = updatedSet.choices
