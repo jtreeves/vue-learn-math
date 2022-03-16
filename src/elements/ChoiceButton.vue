@@ -2,7 +2,12 @@
     <li>
         <GenericButton 
             :text="props.choice.toString()"
-            :class="{ muted: props.wasAnswered || timeState.time === 0 }"
+            :class="{ 
+                muted: props.wasAnswered || 
+                timeState.time === 0 ||
+                statusState.hasWon ||
+                statusState.hasLost
+            }"
             @click="grade"
         />
     </li>
@@ -10,6 +15,7 @@
 
 <script setup lang="ts">
     import timeState from '@/store/timeState'
+    import statusState from '@/store/statusState'
     import updateScore from '@/utilities/updateScore'
     import GenericButton from './GenericButton.vue'
 
