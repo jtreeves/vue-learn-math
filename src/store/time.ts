@@ -6,11 +6,11 @@ import {
 } from '@/interfaces'
 
 export default reactive(<ITime>{
-    time: 5,
-    decrementTime() {
-        this.time--
+    value: 5,
+    decrement() {
+        this.value--
     },
-    resetTime() {
-        this.time = 5
+    reset() {
+        this.value = 5
     }
 })

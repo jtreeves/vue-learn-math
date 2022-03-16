@@ -6,11 +6,11 @@ import {
 } from '@/interfaces'
 
 export default reactive(<IStrikes>{
-    strikes: 0,
-    incrementStrikes() {
-        this.strikes++
+    value: 0,
+    increment() {
+        this.value++
     },
-    resetStrikes() {
-        this.strikes = 0
+    reset() {
+        this.value = 0
     }
 })
