@@ -30,6 +30,10 @@ describe('FeedbackDetails element', () => {
         expect(wrapper.findAll('button').length).toBe(1)
     })
 
+    it('should display Next button', () => {
+        expect(wrapper.text()).toMatch('Next')
+    })
+
     it('should display string of answer property', () => {
         expect(wrapper.text()).toMatch(String(answer))
     })
