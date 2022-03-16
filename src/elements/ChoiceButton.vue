@@ -14,6 +14,7 @@
     const props = defineProps<{
         choice: number
         correct: boolean
+        answered: boolean
     }>()
 
     const emit = defineEmits<{
@@ -25,13 +26,15 @@
     }>()
 
     function grade(): void {
-        if (props.correct) {
-            scoreState.setScore(10)
-        } else {
-            scoreState.setScore(-10)
+        if (!props.answered) {
+            if (props.correct) {
+                scoreState.setScore(10)
+            } else {
+                scoreState.setScore(-10)
+            }
+    
+            emit('getFeedback', props.choice, props.correct)
         }
-
-        emit('getFeedback', props.choice, props.correct)
     }
 </script>
 

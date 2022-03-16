@@ -11,6 +11,7 @@
                     :key="choice"
                     :choice="choice"
                     :correct="determineCorrect(choice)"
+                    :answered="wasAnswered"
                     @get-feedback="showAnswer"
                 />
             </ol>
