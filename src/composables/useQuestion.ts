@@ -7,6 +7,7 @@ import {
     IQuestion, 
     QuestionComposable 
 } from '@/interfaces'
+import playTime from '@/utilities/playTime'
 import generateQuestion from '@/utilities/generateQuestion'
 import shuffleChoices from '@/utilities/shuffleChoices'
 
@@ -62,6 +63,7 @@ function useQuestion(): QuestionComposable {
 
         randomChoices.value = updatedRandoms
         wasAnswered.value = false
+        playTime(wasAnswered)
     }
 
     function showAnswer(
