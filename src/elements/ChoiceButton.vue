@@ -2,6 +2,7 @@
     <li>
         <GenericButton 
             :text="props.choice.toString()"
+            :class="{ muted: props.wasAnswered || timeState.time === 0 }"
             @click="grade"
         />
     </li>
@@ -38,5 +39,14 @@
 <style scoped>
     li {
         width: 200px;
+    }
+
+    .muted {
+        cursor: default;
+        background-color: slateblue;
+    }
+
+    .muted:hover {
+        font-weight: normal;
     }
 </style>
