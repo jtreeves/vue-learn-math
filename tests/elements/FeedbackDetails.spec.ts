@@ -14,7 +14,8 @@ describe('FeedbackDetails element', () => {
         props: {
             answer: answer,
             selection: selection,
-            correct: false
+            wasCorrect: false,
+            wasAnswered: true
         }
     })
 
@@ -42,27 +43,55 @@ describe('FeedbackDetails element', () => {
         expect(wrapper.text()).toMatch(String(selection))
     })
 
-    it('should display the word correct if correct property is true', () => {
+    it('should display the word correct if wasCorrect property is true', () => {
         const correctWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: 5,
                 selection: 5,
-                correct: true
+                wasCorrect: true,
+                wasAnswered: true
             }
         })
 
         expect(correctWrapper.text()).toMatch('correct')
     })
 
-    it('should display the word incorrect if correct property is false', () => {
+    it('should display the word incorrect if wasCorrect property is false', () => {
         const incorrectWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: 5,
                 selection: 4,
-                correct: false
+                wasCorrect: false,
+                wasAnswered: true
             }
         })
 
         expect(incorrectWrapper.text()).toMatch('incorrect')
+    })
+
+    it('should display the word strike if wasAnswered property is false', () => {
+        const strikeWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
+            props: {
+                answer: 5,
+                selection: 4,
+                wasCorrect: false,
+                wasAnswered: false
+            }
+        })
+
+        expect(strikeWrapper.text()).toMatch('strike')
+    })
+
+    it('should not display the word strike if wasAnswered property is true', () => {
+        const strikeWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
+            props: {
+                answer: 5,
+                selection: 4,
+                wasCorrect: false,
+                wasAnswered: true
+            }
+        })
+
+        expect(strikeWrapper.text()).not.toMatch('strike')
     })
 })

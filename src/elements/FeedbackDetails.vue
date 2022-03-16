@@ -2,7 +2,12 @@
     <article>
         <p>Your answer was: {{ props.selection }}</p>
         <p>The correct answer is: {{ props.answer }}</p>
-        <p>You were {{ props.correct ? 'correct' : 'incorrect' }}</p>
+        <p>You were {{ props.wasCorrect ? 'correct' : 'incorrect' }}</p>
+        <p
+            v-if="!props.wasAnswered"
+        >
+            You did not answer the question. You get a strike!
+        </p>
 
         <GenericButton 
             text="Next"
@@ -17,7 +22,8 @@
     const props = defineProps<{
         answer: number
         selection: number
-        correct: boolean
+        wasCorrect: boolean
+        wasAnswered: boolean
     }>()
 
     const emit = defineEmits<{
