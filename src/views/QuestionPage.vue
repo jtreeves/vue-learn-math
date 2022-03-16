@@ -18,7 +18,12 @@
             </ol>
 
             <FeedbackDetails 
-                v-if="wasAnswered || timeState.time === 0"
+                v-if="
+                    wasAnswered || 
+                    timeState.time === 0 ||
+                    statusState.hasWon ||
+                    statusState.hasLost
+                "
                 :answer="answer"
                 :selection="selection"
                 :was-answered="wasAnswered"
@@ -40,6 +45,8 @@
     import playTime from '@/utilities/playTime'
     import timeState from '@/store/timeState'
     import strikesState from '@/store/strikesState'
+    import scoreState from '@/store/scoreState'
+    import statusState from '@/store/statusState'
     import useQuestion from '@/composables/useQuestion'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
     import FeedbackDetails from '@/elements/FeedbackDetails.vue'
@@ -68,6 +75,22 @@
             !wasAnswered.value
         ) {
             strikesState.incrementStrikes()
+        }
+    })
+
+    watch(() => strikesState.strikes, () => {
+        if (
+            strikesState.strikes === 3
+        ) {
+            statusState.setHasLost()
+        }
+    })
+
+    watch(() => scoreState.score, () => {
+        if (
+            scoreState.score >= 1000
+        ) {
+            statusState.setHasWon()
         }
     })
 </script>
