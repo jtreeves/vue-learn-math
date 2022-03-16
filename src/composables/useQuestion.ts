@@ -18,12 +18,20 @@ function useQuestion(): QuestionComposable {
     const wasCorrect: Ref<boolean> = ref(false)
     const answerHistory: Ref<IAnswer[]> = ref([])
 
-    const initialSet: IQuestion = generateQuestion(level.value, type.value)
+    const initialSet: IQuestion = generateQuestion(
+        level.value, 
+        type.value
+    )
 
     const question: Ref<string> = ref(initialSet.question)
     const choices: Ref<number[]> = ref(initialSet.choices)
-    const shuffledChoices: Ref<number[]> = ref(shuffleChoices(choices.value))
-    const correctAnswer: Ref<number> = ref(choices.value[0])
+    const correctAnswer: Ref<number> = ref(initialSet.choices[0])
+
+    const initialRandoms: number[] = shuffleChoices(
+        initialSet.choices
+    )
+
+    const randomChoices: Ref<number[]> = ref(initialRandoms)
 
     function determineCorrect(
         answer: number
@@ -46,8 +54,13 @@ function useQuestion(): QuestionComposable {
         
         question.value = updatedSet.question
         choices.value = updatedSet.choices
-        shuffledChoices.value = shuffleChoices(updatedSet.choices)
         correctAnswer.value = updatedSet.choices[0]
+
+        const updatedRandoms: number[] = shuffleChoices(
+            updatedSet.choices
+        )
+
+        randomChoices.value = updatedRandoms
         wasAnswered.value = false
     }
 
@@ -69,7 +82,7 @@ function useQuestion(): QuestionComposable {
 
     return { 
         question,
-        choices: shuffledChoices,
+        choices: randomChoices,
         answer: correctAnswer,
         selection: selectedChoice,
         wasAnswered,
