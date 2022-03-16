@@ -28,9 +28,13 @@
 </template>
 
 <script setup lang="ts">
+    import {
+        onMounted
+    } from 'vue'
     import { 
         QuestionComposable 
     } from '@/interfaces'
+    import playTime from '@/utilities/playTime'
     import useQuestion from '@/composables/useQuestion'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
     import FeedbackDetails from '@/elements/FeedbackDetails.vue'
@@ -46,6 +50,10 @@
         updateQuestion,
         showAnswer
     }: QuestionComposable = useQuestion()
+
+    onMounted(() => {
+        playTime(wasAnswered)
+    })
 </script>
 
 <style scoped>
