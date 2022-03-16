@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+    import timeState from '@/store/timeState'
     import updateScore from '@/utilities/updateScore'
     import GenericButton from './GenericButton.vue'
 
@@ -27,7 +28,7 @@
     }>()
 
     function grade(): void {
-        if (!props.answered) {
+        if (!props.answered && timeState.time !== 0) {
             updateScore(props.level, props.correct)
             emit('getFeedback', props.choice, props.correct)
         }
