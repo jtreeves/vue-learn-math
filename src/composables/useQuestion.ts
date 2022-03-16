@@ -87,6 +87,7 @@ function useQuestion(): QuestionComposable {
         choices: randomChoices,
         answer: correctAnswer,
         selection: selectedChoice,
+        level,
         wasAnswered,
         wasCorrect,
         determineCorrect,
