@@ -1,12 +1,27 @@
 <template>
     <article>
-        <p>Your answer was: {{ props.selection }}</p>
-        <p>The correct answer is: {{ props.answer }}</p>
-        <p>You were {{ props.wasCorrect ? 'correct' : 'incorrect' }}</p>
-        <p
-            v-if="!props.wasAnswered"
-        >
+        <p>
+            Your answer was: {{ props.selection }}
+        </p>
+        
+        <p>
+            The correct answer is: {{ props.answer }}
+        </p>
+        
+        <p>
+            You were {{ props.wasCorrect ? 'correct' : 'incorrect' }}
+        </p>
+
+        <p v-if="!props.wasAnswered">
             You did not answer the question. You get a strike!
+        </p>
+
+        <p v-if="statusState.hasWon">
+            You won!
+        </p>
+
+        <p v-if="statusState.hasLost">
+            You lost!
         </p>
 
         <GenericButton 
@@ -17,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+    import statusState from '@/store/statusState'
     import GenericButton from './GenericButton.vue'
 
     const props = defineProps<{
