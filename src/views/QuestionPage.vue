@@ -11,6 +11,7 @@
                     :key="choice"
                     :choice="choice"
                     :correct="determineCorrect(choice)"
+                    :level="level"
                     :answered="wasAnswered"
                     @get-feedback="showAnswer"
                 />
@@ -44,6 +45,7 @@
         choices,
         answer,
         selection,
+        level,
         wasAnswered,
         wasCorrect,
         determineCorrect,

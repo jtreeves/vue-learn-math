@@ -39,6 +39,12 @@ describe('useQuestion composable', () => {
         expect(typeof composable.selection.value).toBe('number')
     })
 
+    it('should provide an object called level with a value of type number as a property on the returned object', () => {
+        expect(composable).toHaveProperty('level')
+        expect(typeof composable.level).toBe('object')
+        expect(typeof composable.level.value).toBe('number')
+    })
+
     it('should provide an object called wasAnswered with a value of type boolean as a property on the returned object', () => {
         expect(composable).toHaveProperty('wasAnswered')
         expect(typeof composable.wasAnswered).toBe('object')

@@ -8,13 +8,14 @@
 </template>
 
 <script setup lang="ts">
-    import scoreState from '@/store/scoreState'
+    import updateScore from '@/utilities/updateScore'
     import GenericButton from './GenericButton.vue'
 
     const props = defineProps<{
         choice: number
         correct: boolean
         answered: boolean
+        level: number
     }>()
 
     const emit = defineEmits<{
@@ -27,12 +28,7 @@
 
     function grade(): void {
         if (!props.answered) {
-            if (props.correct) {
-                scoreState.setScore(10)
-            } else {
-                scoreState.setScore(-10)
-            }
-    
+            updateScore(props.level, props.correct)
             emit('getFeedback', props.choice, props.correct)
         }
     }

@@ -62,6 +62,7 @@ interface QuestionComposable {
     question: Ref<string>
     choices: Ref<number[]>
     answer: Ref<number>
+    level: Ref<number>
     selection: Ref<number>
     wasAnswered: Ref<boolean>
     wasCorrect: Ref<boolean>
