@@ -1,13 +1,12 @@
 <template>
-    <button @click="props.handleClick">
+    <button>
         {{ props.text }}
     </button>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     const props = defineProps<{
         text: string
-        handleClick: () => void
     }>()
 </script>
 

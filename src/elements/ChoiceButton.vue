@@ -2,12 +2,12 @@
     <li>
         <GenericButton 
             :text="props.choice.toString()"
-            :handleClick="grade"
+            @click="grade"
         />
     </li>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import scoreState from '@/store/scoreState'
     import GenericButton from './GenericButton.vue'
 
@@ -16,8 +16,12 @@
         correct: boolean
     }>()
 
-    const emits = defineEmits<{
-        (event: 'nextQuestion'): void
+    const emit = defineEmits<{
+        (
+            event: 'getFeedback', 
+            choice: number,
+            correct: boolean
+        ): void
     }>()
 
     function grade(): void {
@@ -27,7 +31,7 @@
             scoreState.setScore(-10)
         }
 
-        emits('nextQuestion')
+        emit('getFeedback', props.choice, props.correct)
     }
 </script>
 

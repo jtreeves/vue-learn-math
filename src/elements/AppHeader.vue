@@ -1,25 +1,25 @@
 <template>
     <header>
         <section>
-            <router-link to="/home">
+            <RouterLink to="/home">
                 <img
                     alt="Rubiks Cube"
                     src="@/assets/rubiks.jpg"
                 >
-            </router-link>
+            </RouterLink>
 
-            <router-link to="/home">
+            <RouterLink to="/home">
                 <span>
                     Learn Math
                 </span>
-            </router-link>
+            </RouterLink>
         </section>
 
         <ScoreBoard />
     </header>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import ScoreBoard from './ScoreBoard.vue'
 </script>
 

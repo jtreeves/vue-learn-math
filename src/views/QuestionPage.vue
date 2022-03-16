@@ -11,25 +11,39 @@
                     :key="choice"
                     :choice="choice"
                     :correct="determineCorrect(choice)"
-                    @nextQuestion="updateQuestion"
+                    @get-feedback="showAnswer"
                 />
             </ol>
+
+            <FeedbackDetails 
+                v-if="wasAnswered"
+                :answer="answer"
+                :selection="selection"
+                :correct="wasCorrect"
+                @get-question="updateQuestion"
+            />
         </section>
     </main>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import { 
         QuestionComposable 
     } from '@/interfaces'
     import useQuestion from '@/composables/useQuestion'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
+    import FeedbackDetails from '@/elements/FeedbackDetails.vue'
     
     const {
         question,
         choices,
+        answer,
+        selection,
+        wasAnswered,
+        wasCorrect,
         determineCorrect,
-        updateQuestion
+        updateQuestion,
+        showAnswer
     }: QuestionComposable = useQuestion()
 </script>
 

@@ -17,11 +17,11 @@ describe('ChoiceButton element', () => {
     })
 
     it('should render 1 li tag', () => {
-        expect(wrapper.find('li')).toBeTruthy()
+        expect(wrapper.findAll('li').length).toBe(1)
     })
 
     it('should render 1 button tag', () => {
-        expect(wrapper.find('button')).toBeTruthy()
+        expect(wrapper.findAll('button').length).toBe(1)
     })
 
     it('should display string of choice prop', () => {

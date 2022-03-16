@@ -1,9 +1,6 @@
 import timeState from '@/store/timeState'
 
 describe('timeState store', () => {
-    jest.useFakeTimers()
-    jest.spyOn(globalThis, 'setInterval')
-
     beforeEach(() => {
         timeState.resetTime()
     })
@@ -28,11 +25,6 @@ describe('timeState store', () => {
         expect(typeof timeState.resetTime).toBe('function')
     })
 
-    it('should contain playTime property of type function', () => {
-        expect(timeState).toHaveProperty('playTime')
-        expect(typeof timeState.playTime).toBe('function')
-    })
-
     it('should decrease time property by 1 when invoke setTime', () => {
         const currentTime: number = timeState.time
         timeState.setTime()
@@ -51,13 +43,6 @@ describe('timeState store', () => {
         expect(updatedTime).not.toBe(initialTime)
         expect(updatedTime).not.toBe(5)
         expect(finalTime).toBe(5)
-    })
-
-    it('should run setInterval once with intervals every 1 second when invoke playTime', () => {
-        timeState.playTime(false)
-        
-        expect(setInterval).toHaveBeenCalledTimes(1)
-        expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000)
     })
 
     it('should persist changes to time state across instances', () => {

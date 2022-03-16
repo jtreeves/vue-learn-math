@@ -14,31 +14,31 @@
             <GenericButton 
                 v-if="step === 1"
                 text="Back Home"
-                :handleClick="goHome"
+                @click="goHome"
             />
             
             <GenericButton 
                 v-if="step === 2 || step === 3"
                 text="Previous Step"
-                :handleClick="loadPrevious"
+                @click="loadPrevious"
             />
             
             <GenericButton 
                 v-if="step === 1 || step === 2"
                 text="Next Step"
-                :handleClick="loadNext"
+                @click="loadNext"
             />
             
             <GenericButton 
                 v-if="step === 3"
                 text="Play Game"
-                :handleClick="playGame"
+                @click="playGame"
             />
         </aside>
     </main>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import { 
         InstructionsComposable,
         LandingPagesComposable

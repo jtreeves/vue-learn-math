@@ -35,4 +35,11 @@ describe('generateAnswer utility', () => {
 
         expect(newAnswer).toBe(quotient)
     })
+
+    it('should return the sum of two numbers if type is anything other than one of the core 4 operations', () => {
+        const newAnswer: number = generateAnswer(firstNumber, secondNumber, 'other')
+        const sum: number = firstNumber + secondNumber
+
+        expect(newAnswer).toBe(sum)
+    })
 })

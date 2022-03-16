@@ -12,18 +12,18 @@
         <aside>
             <GenericButton
                 text="Read Instructions"
-                :handleClick="readInstructions"
+                @click="readInstructions"
             />
 
             <GenericButton
                 text="Play Game"
-                :handleClick="playGame"
+                @click="playGame"
             />
         </aside>
     </main>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import {
         LandingPagesComposable
     } from '@/interfaces'

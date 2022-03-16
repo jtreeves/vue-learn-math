@@ -4,7 +4,7 @@
     <AppFooter />
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import AppHeader from '@/elements/AppHeader.vue'
     import AppFooter from '@/elements/AppFooter.vue'
 </script>

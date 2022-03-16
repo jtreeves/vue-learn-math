@@ -18,7 +18,7 @@
     </section>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import scoreState from '@/store/scoreState'
     import timeState from '@/store/timeState'
     import strikesState from '@/store/strikesState'

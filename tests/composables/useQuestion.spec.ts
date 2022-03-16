@@ -27,6 +27,30 @@ describe('useQuestion composable', () => {
        })
     })
 
+    it('should provide an object called answer with a value of type number as a property on the returned object', () => {
+        expect(composable).toHaveProperty('answer')
+        expect(typeof composable.answer).toBe('object')
+        expect(typeof composable.answer.value).toBe('number')
+    })
+
+    it('should provide an object called selection with a value of type number as a property on the returned object', () => {
+        expect(composable).toHaveProperty('selection')
+        expect(typeof composable.selection).toBe('object')
+        expect(typeof composable.selection.value).toBe('number')
+    })
+
+    it('should provide an object called wasAnswered with a value of type boolean as a property on the returned object', () => {
+        expect(composable).toHaveProperty('wasAnswered')
+        expect(typeof composable.wasAnswered).toBe('object')
+        expect(typeof composable.wasAnswered.value).toBe('boolean')
+    })
+
+    it('should provide an object called wasCorrect with a value of type boolean as a property on the returned object', () => {
+        expect(composable).toHaveProperty('wasCorrect')
+        expect(typeof composable.wasCorrect).toBe('object')
+        expect(typeof composable.wasCorrect.value).toBe('boolean')
+    })
+
     it('should provide a function called determineCorrect as a property on the returned object', () => {
        expect(composable).toHaveProperty('determineCorrect')
        expect(typeof composable.determineCorrect).toBe('function')
@@ -35,5 +59,10 @@ describe('useQuestion composable', () => {
     it('should provide a function called updateQuestion as a property on the returned object', () => {
        expect(composable).toHaveProperty('updateQuestion')
        expect(typeof composable.updateQuestion).toBe('function')
+    })
+
+    it('should provide a function called showAnswer as a property on the returned object', () => {
+       expect(composable).toHaveProperty('showAnswer')
+       expect(typeof composable.showAnswer).toBe('function')
     })
 })

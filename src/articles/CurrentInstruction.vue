@@ -6,7 +6,7 @@
     </article>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts">
     import FirstInstruction from './FirstInstruction.vue'
     import SecondInstruction from './SecondInstruction.vue'
     import ThirdInstruction from './ThirdInstruction.vue'

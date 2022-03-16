@@ -32,4 +32,11 @@ describe('selectSymbol utility', () => {
 
         expect(includesDivision).toBe(true)
     })
+
+    it('should return a plus sign if type is anything other than one of the core 4 operations', () => {
+        const newSymbol: string = selectSymbol('other')
+        const includesPlus: boolean = newSymbol.includes('+')
+
+        expect(includesPlus).toBe(true)
+    })
 })
