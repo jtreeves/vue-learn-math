@@ -18,10 +18,11 @@
             </ol>
 
             <FeedbackDetails 
-                v-if="wasAnswered"
+                v-if="wasAnswered || timeState.time === 0"
                 :answer="answer"
                 :selection="selection"
-                :correct="wasCorrect"
+                :was-correct="wasCorrect"
+                :was-answered="wasAnswered"
                 @get-question="updateQuestion"
             />
         </section>
@@ -30,12 +31,15 @@
 
 <script setup lang="ts">
     import {
-        onMounted
+        onMounted,
+        watch
     } from 'vue'
     import { 
         QuestionComposable 
     } from '@/interfaces'
     import playTime from '@/utilities/playTime'
+    import timeState from '@/store/timeState'
+    import strikesState from '@/store/strikesState'
     import useQuestion from '@/composables/useQuestion'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
     import FeedbackDetails from '@/elements/FeedbackDetails.vue'
@@ -55,6 +59,16 @@
 
     onMounted(() => {
         playTime(wasAnswered)
+    })
+
+    watch(() => timeState.time, (newTime, oldTime) => {
+        if (
+            timeState.time === 0 && 
+            newTime !== oldTime && 
+            !wasAnswered.value
+        ) {
+            strikesState.setStrikes()
+        }
     })
 </script>
 
