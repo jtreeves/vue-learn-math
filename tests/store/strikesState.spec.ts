@@ -15,9 +15,9 @@ describe('strikesState store', () => {
         expect(strikesState.strikes).toEqual(0)
     })
 
-    it('should contain setStrikes property of type function', () => {
-        expect(strikesState).toHaveProperty('setStrikes')
-        expect(typeof strikesState.setStrikes).toBe('function')
+    it('should contain incrementStrikes property of type function', () => {
+        expect(strikesState).toHaveProperty('incrementStrikes')
+        expect(typeof strikesState.incrementStrikes).toBe('function')
     })
 
     it('should contain resetStrikes property of type function', () => {
@@ -25,9 +25,9 @@ describe('strikesState store', () => {
         expect(typeof strikesState.resetStrikes).toBe('function')
     })
 
-    it('should increase strikes property by 1 when invoke setStrikes', () => {
+    it('should increase strikes property by 1 when invoke incrementStrikes', () => {
         const currentStrikes: number = strikesState.strikes
-        strikesState.setStrikes()
+        strikesState.incrementStrikes()
         const updatedStrikes: number = strikesState.strikes
         
         expect(updatedStrikes).toBe(currentStrikes + 1)
@@ -35,7 +35,7 @@ describe('strikesState store', () => {
 
     it('should set strikes back to 0 when invoke resetStrikes', () => {
         const initialStrikes: number = strikesState.strikes
-        strikesState.setStrikes()
+        strikesState.incrementStrikes()
         const nonzeroStrikes: number = strikesState.strikes
         strikesState.resetStrikes()
         const finalStrikes: number = strikesState.strikes
@@ -49,7 +49,7 @@ describe('strikesState store', () => {
         let remoteStrikes: number = 0
 
         function firstInstance() {
-            strikesState.setStrikes()
+            strikesState.incrementStrikes()
         }
 
         function secondInstance() {

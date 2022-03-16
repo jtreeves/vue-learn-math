@@ -10,7 +10,7 @@ function playTime(
 
     const id: number = setInterval(
         () => {
-            timeState.setTime()
+            timeState.decrementTime()
 
             if (timeState.time === 0 || wasAnswered.value) {
                 clearInterval(id)

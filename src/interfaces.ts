@@ -10,12 +10,12 @@ interface IQuestion {
 interface IAnswer {
     level: number
     type: string
-    correct: boolean
+    wasCorrect: boolean
 }
 
 interface IScore {
     score: number
-    setScore(points: number): void
+    incrementScore(points: number): void
     resetScore(): void
 }
 
@@ -33,13 +33,13 @@ interface IStatus {
 
 interface IStrikes {
     strikes: number
-    setStrikes(): void
+    incrementStrikes(): void
     resetStrikes(): void
 }
 
 interface ITime {
     time: number
-    setTime(): void
+    decrementTime(): void
     resetTime(): void
 }
 
@@ -54,7 +54,7 @@ interface INumberBooleanFunction {
 interface IChoiceCorrectFunction {
     (
         choice: number,
-        correct: boolean
+        isCorrect: boolean
     ): void
 }
 

@@ -10,9 +10,9 @@
                     v-for="choice in choices"
                     :key="choice"
                     :choice="choice"
-                    :correct="determineCorrect(choice)"
                     :level="level"
-                    :answered="wasAnswered"
+                    :was-answered="wasAnswered"
+                    :is-correct="determineCorrect(choice)"
                     @get-feedback="showAnswer"
                 />
             </ol>
@@ -21,8 +21,8 @@
                 v-if="wasAnswered || timeState.time === 0"
                 :answer="answer"
                 :selection="selection"
-                :was-correct="wasCorrect"
                 :was-answered="wasAnswered"
+                :was-correct="wasCorrect"
                 @get-question="updateQuestion"
             />
         </section>
@@ -67,7 +67,7 @@
             newTime !== oldTime && 
             !wasAnswered.value
         ) {
-            strikesState.setStrikes()
+            strikesState.incrementStrikes()
         }
     })
 </script>

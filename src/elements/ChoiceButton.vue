@@ -14,23 +14,23 @@
 
     const props = defineProps<{
         choice: number
-        correct: boolean
-        answered: boolean
         level: number
+        wasAnswered: boolean
+        isCorrect: boolean
     }>()
 
     const emit = defineEmits<{
         (
             event: 'getFeedback', 
             choice: number,
-            correct: boolean
+            isCorrect: boolean
         ): void
     }>()
 
     function grade(): void {
-        if (!props.answered && timeState.time !== 0) {
-            updateScore(props.level, props.correct)
-            emit('getFeedback', props.choice, props.correct)
+        if (!props.wasAnswered && timeState.time !== 0) {
+            updateScore(props.level, props.isCorrect)
+            emit('getFeedback', props.choice, props.isCorrect)
         }
     }
 </script>

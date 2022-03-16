@@ -7,7 +7,7 @@ import {
 
 export default reactive(<ITime>{
     time: 5,
-    setTime() {
+    decrementTime() {
         this.time--
     },
     resetTime() {

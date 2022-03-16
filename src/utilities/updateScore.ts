@@ -2,9 +2,9 @@ import scoreState from '@/store/scoreState'
 
 function updateScore(
     level: number,
-    correct: boolean
+    wasCorrect: boolean
 ): void {
-    const multiplier: number = correct ? 1 : -1
+    const multiplier: number = wasCorrect ? 1 : -1
 
     let points: number = 0
 
@@ -27,7 +27,7 @@ function updateScore(
 
     const change: number = points * multiplier
 
-    scoreState.setScore(change)
+    scoreState.incrementScore(change)
 }
 
 export default updateScore

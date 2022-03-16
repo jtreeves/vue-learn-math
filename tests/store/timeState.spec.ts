@@ -15,9 +15,9 @@ describe('timeState store', () => {
         expect(timeState.time).toEqual(5)
     })
 
-    it('should contain setTime property of type function', () => {
-        expect(timeState).toHaveProperty('setTime')
-        expect(typeof timeState.setTime).toBe('function')
+    it('should contain decrementTime property of type function', () => {
+        expect(timeState).toHaveProperty('decrementTime')
+        expect(typeof timeState.decrementTime).toBe('function')
     })
 
     it('should contain resetTime property of type function', () => {
@@ -25,9 +25,9 @@ describe('timeState store', () => {
         expect(typeof timeState.resetTime).toBe('function')
     })
 
-    it('should decrease time property by 1 when invoke setTime', () => {
+    it('should decrease time property by 1 when invoke decrementTime', () => {
         const currentTime: number = timeState.time
-        timeState.setTime()
+        timeState.decrementTime()
         const updatedTime: number = timeState.time
         
         expect(updatedTime).toBe(currentTime - 1)
@@ -35,7 +35,7 @@ describe('timeState store', () => {
 
     it('should set time back to 5 when invoke resetTime', () => {
         const initialTime: number = timeState.time
-        timeState.setTime()
+        timeState.decrementTime()
         const updatedTime: number = timeState.time
         timeState.resetTime()
         const finalTime: number = timeState.time
@@ -49,7 +49,7 @@ describe('timeState store', () => {
         let remoteTime: number = 5
 
         function firstInstance() {
-            timeState.setTime()
+            timeState.decrementTime()
         }
 
         function secondInstance() {

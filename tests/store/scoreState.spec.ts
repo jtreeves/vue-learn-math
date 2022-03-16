@@ -15,9 +15,9 @@ describe('scoreState store', () => {
         expect(scoreState.score).toEqual(0)
     })
 
-    it('should contain setScore property of type function', () => {
-        expect(scoreState).toHaveProperty('setScore')
-        expect(typeof scoreState.setScore).toBe('function')
+    it('should contain incrementScore property of type function', () => {
+        expect(scoreState).toHaveProperty('incrementScore')
+        expect(typeof scoreState.incrementScore).toBe('function')
     })
 
     it('should contain resetScore property of type function', () => {
@@ -25,17 +25,17 @@ describe('scoreState store', () => {
         expect(typeof scoreState.resetScore).toBe('function')
     })
 
-    it('should increase score property by 10 points when invoke setScore with 10 as argument', () => {
+    it('should increase score property by 10 points when invoke incrementScore with 10 as argument', () => {
         const currentScore: number = scoreState.score
-        scoreState.setScore(10)
+        scoreState.incrementScore(10)
         const updatedScore: number = scoreState.score
         
         expect(updatedScore).toBe(currentScore + 10)
     })
 
-    it('should decrease score property by 10 points when invoke setScore with -10 as argument', () => {
+    it('should decrease score property by 10 points when invoke incrementScore with -10 as argument', () => {
         const currentScore: number = scoreState.score
-        scoreState.setScore(-10)
+        scoreState.incrementScore(-10)
         const updatedScore: number = scoreState.score
         
         expect(updatedScore).toBe(currentScore - 10)
@@ -43,7 +43,7 @@ describe('scoreState store', () => {
 
     it('should set score back to 0 when invoke resetScore', () => {
         const initialScore: number = scoreState.score
-        scoreState.setScore(10)
+        scoreState.incrementScore(10)
         const nonzeroScore: number = scoreState.score
         scoreState.resetScore()
         const finalScore: number = scoreState.score
@@ -57,7 +57,7 @@ describe('scoreState store', () => {
         let remoteScore: number = 0
 
         function firstInstance() {
-            scoreState.setScore(10)
+            scoreState.incrementScore(10)
         }
 
         function secondInstance() {

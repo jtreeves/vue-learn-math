@@ -7,7 +7,7 @@ import {
 
 export default reactive(<IScore>{
     score: 0,
-    setScore(points: number) {
+    incrementScore(points: number) {
         this.score += points
     },
     resetScore() {

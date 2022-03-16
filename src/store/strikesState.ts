@@ -7,7 +7,7 @@ import {
 
 export default reactive(<IStrikes>{
     strikes: 0,
-    setStrikes() {
+    incrementStrikes() {
         this.strikes++
     },
     resetStrikes() {

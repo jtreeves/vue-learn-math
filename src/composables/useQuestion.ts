@@ -68,16 +68,16 @@ function useQuestion(): QuestionComposable {
 
     function showAnswer(
         choice: number,
-        correct: boolean
+        isCorrect: boolean
     ): void {
         const answer: IAnswer = {
             type: type.value,
             level: level.value,
-            correct: correct
+            wasCorrect: isCorrect
         }
 
         wasAnswered.value = true
-        wasCorrect.value = correct
+        wasCorrect.value = isCorrect
         selectedChoice.value = choice
         answerHistory.value.push(answer)
     }
