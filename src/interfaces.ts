@@ -13,6 +13,11 @@ interface IAnswer {
     wasCorrect: boolean
 }
 
+interface IFeedback {
+    red: boolean
+    green: boolean
+}
+
 interface IScore {
     value: number
     increment(points: number): void
@@ -71,6 +76,7 @@ interface LandingPagesComposable {
 export type {
     IQuestion,
     IAnswer,
+    IFeedback,
     IScore,
     IStrikes,
     IStatus,

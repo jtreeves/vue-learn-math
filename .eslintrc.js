@@ -20,7 +20,8 @@ module.exports = {
         'no-trailing-spaces': 0,
         '@typescript-eslint/no-inferrable-types': 0,
         '@typescript-eslint/no-explicit-any': 0,
-        'func-call-spacing': 0
+        'func-call-spacing': 0,
+        quotes: 0
     },
     overrides: [
         {
