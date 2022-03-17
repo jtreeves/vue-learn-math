@@ -20,15 +20,16 @@
             <FeedbackDetails 
                 v-if="
                     wasAnswered || 
-                    timeState.time === 0 ||
-                    statusState.hasWon ||
-                    statusState.hasLost
+                    time.value === 0 ||
+                    status.hasWon ||
+                    status.hasLost
                 "
                 :answer="answer"
                 :selection="selection"
                 :was-answered="wasAnswered"
                 :was-correct="wasCorrect"
                 @get-question="updateQuestion"
+                @play-again="resetQuestion"
             />
         </section>
     </main>
@@ -36,18 +37,16 @@
 
 <script setup lang="ts">
     import {
-        onMounted,
-        watch
+        onMounted
     } from 'vue'
     import { 
         QuestionComposable 
     } from '@/interfaces'
     import playTime from '@/utilities/playTime'
-    import timeState from '@/store/timeState'
-    import strikesState from '@/store/strikesState'
-    import scoreState from '@/store/scoreState'
-    import statusState from '@/store/statusState'
+    import time from '@/store/time'
+    import status from '@/store/status'
     import useQuestion from '@/composables/useQuestion'
+    import useWatchers from '@/composables/useWatchers'
     import ChoiceButton from '@/elements/ChoiceButton.vue'
     import FeedbackDetails from '@/elements/FeedbackDetails.vue'
     
@@ -61,38 +60,15 @@
         wasCorrect,
         determineCorrect,
         updateQuestion,
-        showAnswer
+        showAnswer,
+        resetQuestion
     }: QuestionComposable = useQuestion()
 
     onMounted(() => {
         playTime(wasAnswered)
     })
 
-    watch(() => timeState.time, (newTime, oldTime) => {
-        if (
-            timeState.time === 0 && 
-            newTime !== oldTime && 
-            !wasAnswered.value
-        ) {
-            strikesState.incrementStrikes()
-        }
-    })
-
-    watch(() => strikesState.strikes, () => {
-        if (
-            strikesState.strikes === 3
-        ) {
-            statusState.setHasLost()
-        }
-    })
-
-    watch(() => scoreState.score, () => {
-        if (
-            scoreState.score >= 1000
-        ) {
-            statusState.setHasWon()
-        }
-    })
+    useWatchers(wasAnswered)
 </script>
 
 <style scoped>
