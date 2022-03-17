@@ -1,26 +1,26 @@
 <template>
     <section>
         <article>
-            Status: {{ statusState.status }}
+            Status: {{ status.value }}
         </article>
 
         <article>
-            Strikes: {{ strikesState.strikes }}
+            Strikes: {{ strikes.value }}
         </article>
 
         <article>
-            Time: {{ timeState.time }}
+            Time: {{ time.value }}
         </article>
 
         <article>
-            Score: {{ scoreState.score }}
+            Score: {{ score.value }}
         </article>
     </section>
 </template>
 
 <script setup lang="ts">
-    import scoreState from '@/store/scoreState'
-    import timeState from '@/store/timeState'
-    import strikesState from '@/store/strikesState'
-    import statusState from '@/store/statusState'
+    import score from '@/store/score'
+    import time from '@/store/time'
+    import strikes from '@/store/strikes'
+    import status from '@/store/status'
 </script>

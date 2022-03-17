@@ -1,11 +1,9 @@
-import scoreState from '@/store/scoreState'
+import score from '@/store/score'
 
 function updateScore(
     level: number,
     wasCorrect: boolean
 ): void {
-    const multiplier: number = wasCorrect ? 1 : -1
-
     let points: number = 0
 
     switch (level) {
@@ -25,9 +23,11 @@ function updateScore(
             points = 10
     }
 
-    const change: number = points * multiplier
-
-    scoreState.incrementScore(change)
+    if (wasCorrect) {
+        score.increment(points)
+    } else {
+        score.decrement(points)
+    }
 }
 
 export default updateScore

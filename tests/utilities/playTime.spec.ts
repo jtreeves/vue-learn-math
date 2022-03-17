@@ -2,7 +2,7 @@ import {
     ref,
     Ref
 } from 'vue'
-import timeState from '@/store/timeState'
+import time from '@/store/time'
 import playTime from '@/utilities/playTime'
 
 describe('playTime utility', () => {
@@ -10,7 +10,7 @@ describe('playTime utility', () => {
     jest.spyOn(globalThis, 'setInterval')
 
     beforeEach(() => {
-        timeState.resetTime()
+        time.reset()
     })
 
     it('should be a function', () => {

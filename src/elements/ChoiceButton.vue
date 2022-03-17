@@ -4,9 +4,9 @@
             :text="props.choice.toString()"
             :class="{ 
                 muted: props.wasAnswered || 
-                timeState.time === 0 ||
-                statusState.hasWon ||
-                statusState.hasLost
+                time.value === 0 ||
+                status.hasWon ||
+                status.hasLost
             }"
             @click="grade"
         />
@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-    import timeState from '@/store/timeState'
-    import statusState from '@/store/statusState'
+    import time from '@/store/time'
+    import status from '@/store/status'
     import updateScore from '@/utilities/updateScore'
     import GenericButton from './GenericButton.vue'
 
@@ -35,7 +35,7 @@
     }>()
 
     function grade(): void {
-        if (!props.wasAnswered && timeState.time !== 0) {
+        if (!props.wasAnswered && time.value !== 0) {
             updateScore(props.level, props.isCorrect)
             emit('getFeedback', props.choice, props.isCorrect)
         }

@@ -1,4 +1,6 @@
-import { QuestionComposable } from '@/interfaces'
+import { 
+    QuestionComposable 
+} from '@/interfaces'
 import useQuestion from '@/composables/useQuestion'
 
 describe('useQuestion composable', () => {
@@ -70,5 +72,10 @@ describe('useQuestion composable', () => {
     it('should provide a function called showAnswer as a property on the returned object', () => {
        expect(composable).toHaveProperty('showAnswer')
        expect(typeof composable.showAnswer).toBe('function')
+    })
+
+    it('should provide a function called resetQuestion as a property on the returned object', () => {
+       expect(composable).toHaveProperty('resetQuestion')
+       expect(typeof composable.resetQuestion).toBe('function')
     })
 })

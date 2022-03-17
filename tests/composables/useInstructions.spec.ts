@@ -1,5 +1,9 @@
-import { withSetup } from '../index'
-import { InstructionsComposable } from '@/interfaces'
+import { 
+    withSetup 
+} from '../index'
+import { 
+    InstructionsComposable 
+} from '@/interfaces'
 import useInstructions from '@/composables/useInstructions'
 
 describe('useInstructions composable', () => {

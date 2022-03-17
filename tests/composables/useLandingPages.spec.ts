@@ -1,5 +1,9 @@
-import { withSetup } from '../index'
-import { LandingPagesComposable } from '@/interfaces'
+import { 
+    withSetup 
+} from '../index'
+import { 
+    LandingPagesComposable 
+} from '@/interfaces'
 import useLandingPages from '@/composables/useLandingPages'
 
 describe('useLandingPages composable', () => {

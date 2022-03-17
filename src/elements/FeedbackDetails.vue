@@ -3,7 +3,7 @@
         <p>
             Your answer was: {{ props.selection }}
         </p>
-        
+
         <p>
             The correct answer is: {{ props.answer }}
         </p>
@@ -16,23 +16,30 @@
             You did not answer the question. You get a strike!
         </p>
 
-        <p v-if="statusState.hasWon">
+        <p v-if="status.hasWon">
             You won!
         </p>
 
-        <p v-if="statusState.hasLost">
+        <p v-if="status.hasLost">
             You lost!
         </p>
 
         <GenericButton 
+            v-if="status.value"
             text="Next"
             @click="emit('getQuestion')"
+        />
+
+        <GenericButton 
+            v-if="!status.value"
+            text="Play Again"
+            @click="emit('playAgain')"
         />
     </article>
 </template>
 
 <script setup lang="ts">
-    import statusState from '@/store/statusState'
+    import status from '@/store/status'
     import GenericButton from './GenericButton.vue'
 
     const props = defineProps<{
@@ -43,7 +50,8 @@
     }>()
 
     const emit = defineEmits<{
-        (event: 'getQuestion'): void
+        (event: 'getQuestion'): void,
+        (event: 'playAgain'): void
     }>()
 </script>
 

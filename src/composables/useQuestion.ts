@@ -8,6 +8,7 @@ import {
     QuestionComposable 
 } from '@/interfaces'
 import playTime from '@/utilities/playTime'
+import resetGame from '@/utilities/resetGame'
 import generateQuestion from '@/utilities/generateQuestion'
 import shuffleChoices from '@/utilities/shuffleChoices'
 
@@ -82,6 +83,12 @@ function useQuestion(): QuestionComposable {
         answerHistory.value.push(answer)
     }
 
+    function resetQuestion() {
+        answerHistory.value = []
+        resetGame()
+        updateQuestion()
+    }
+
     return { 
         question,
         choices: randomChoices,
@@ -92,7 +99,8 @@ function useQuestion(): QuestionComposable {
         wasCorrect,
         determineCorrect,
         updateQuestion,
-        showAnswer
+        showAnswer,
+        resetQuestion
     }
 }
 

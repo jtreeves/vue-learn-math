@@ -14,48 +14,32 @@ interface IAnswer {
 }
 
 interface IScore {
-    score: number
-    incrementScore(points: number): void
-    resetScore(): void
+    value: number
+    increment(points: number): void
+    decrement(points: number): void
+    reset(): void
 }
 
 interface IStatus {
-    status: boolean
+    value: boolean
     hasWon: boolean
     hasLost: boolean
-    setStatus(): void
     setHasWon(): void
     setHasLost(): void
-    resetStatus(): void
-    resetHasWon(): void
-    resetHasLost(): void
+    check(): void
+    reset(): void
 }
 
 interface IStrikes {
-    strikes: number
-    incrementStrikes(): void
-    resetStrikes(): void
+    value: number
+    increment(): void
+    reset(): void
 }
 
 interface ITime {
-    time: number
-    decrementTime(): void
-    resetTime(): void
-}
-
-interface IVoidFunction {
-    (): void
-}
-
-interface INumberBooleanFunction {
-    (answer: number): boolean
-}
-
-interface IChoiceCorrectFunction {
-    (
-        choice: number,
-        isCorrect: boolean
-    ): void
+    value: number
+    decrement(): void
+    reset(): void
 }
 
 interface QuestionComposable {
@@ -66,21 +50,22 @@ interface QuestionComposable {
     selection: Ref<number>
     wasAnswered: Ref<boolean>
     wasCorrect: Ref<boolean>
-    determineCorrect: INumberBooleanFunction
-    updateQuestion: IVoidFunction
-    showAnswer: IChoiceCorrectFunction
+    updateQuestion(): void
+    showAnswer(choice: number, isCorrect: boolean): void
+    determineCorrect(answer: number): boolean
+    resetQuestion(): void
 }
 
 interface InstructionsComposable {
     step: Ref<number>
-    loadNext: IVoidFunction
-    loadPrevious: IVoidFunction
+    loadNext(): void
+    loadPrevious(): void
 }
 
 interface LandingPagesComposable {
-    goHome: IVoidFunction
-    playGame: IVoidFunction
-    readInstructions: IVoidFunction
+    goHome(): void
+    playGame(): void
+    readInstructions(): void
 }
 
 export type {
