@@ -15,7 +15,6 @@ import shuffleChoices from '@/utilities/shuffleChoices'
 function useQuestion(): QuestionComposable {
     const level: Ref<number> = ref(1)
     const type: Ref<string> = ref('addition')
-    const selectedChoice: Ref<number> = ref(0)
     const wasAnswered: Ref<boolean> = ref(false)
     const wasCorrect: Ref<boolean> = ref(false)
     const answerHistory: Ref<IAnswer[]> = ref([])
@@ -68,7 +67,6 @@ function useQuestion(): QuestionComposable {
     }
 
     function showAnswer(
-        choice: number,
         isCorrect: boolean
     ): void {
         const answer: IAnswer = {
@@ -79,7 +77,6 @@ function useQuestion(): QuestionComposable {
 
         wasAnswered.value = true
         wasCorrect.value = isCorrect
-        selectedChoice.value = choice
         answerHistory.value.push(answer)
     }
 
@@ -93,7 +90,6 @@ function useQuestion(): QuestionComposable {
         question,
         choices: randomChoices,
         answer: correctAnswer,
-        selection: selectedChoice,
         level,
         wasAnswered,
         wasCorrect,
