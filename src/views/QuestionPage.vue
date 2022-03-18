@@ -5,7 +5,7 @@
         <section>
             <h2>{{ question }}</h2>
 
-            <ol>
+            <ol :class="styling">
                 <ChoiceButton 
                     v-for="choice in choices"
                     :key="choice"
@@ -25,9 +25,9 @@
                     status.hasLost
                 "
                 :answer="answer"
-                :selection="selection"
                 :was-answered="wasAnswered"
                 :was-correct="wasCorrect"
+                :styling="styling"
                 @get-question="updateQuestion"
                 @play-again="resetQuestion"
             />
@@ -37,10 +37,13 @@
 
 <script setup lang="ts">
     import {
-        onMounted
+        onMounted,
+        computed,
+        ComputedRef
     } from 'vue'
     import { 
-        QuestionComposable 
+        QuestionComposable,
+        IFeedbackStyling
     } from '@/interfaces'
     import playTime from '@/utilities/playTime'
     import time from '@/store/time'
@@ -54,7 +57,6 @@
         question,
         choices,
         answer,
-        selection,
         level,
         wasAnswered,
         wasCorrect,
@@ -64,6 +66,17 @@
         resetQuestion
     }: QuestionComposable = useQuestion()
 
+    const styling: ComputedRef<IFeedbackStyling> = computed(() => {
+        const red: boolean = status.hasLost || (time.value === 0 && !wasAnswered.value) || (wasAnswered.value && !wasCorrect.value)
+        const green: boolean = status.hasWon || (wasAnswered.value && wasCorrect.value)
+        const stylingObject: IFeedbackStyling = {
+            red,
+            green
+        }
+
+        return stylingObject
+    })
+    
     onMounted(() => {
         playTime(wasAnswered)
     })
@@ -84,5 +97,15 @@
         flex-direction: column;
         gap: 20px;
         align-items: center;
+    }
+
+    .red {
+        padding: 5px;
+        border: 5px solid red;
+    }
+
+    .green {
+        padding: 5px;
+        border: 5px solid green;
     }
 </style>
