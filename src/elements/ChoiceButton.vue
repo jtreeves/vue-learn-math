@@ -2,18 +2,22 @@
     <li>
         <GenericButton 
             :text="props.choice.toString()"
-            :class="{ 
-                muted: props.wasAnswered || 
-                time.value === 0 ||
-                status.hasWon ||
-                status.hasLost
-            }"
+            :class="styling"
             @click="grade"
         />
     </li>
 </template>
 
 <script setup lang="ts">
+    import {
+        ref,
+        Ref,
+        computed,
+        ComputedRef
+    } from 'vue'
+    import {
+        IChoiceStyling
+    } from '@/interfaces'
     import time from '@/store/time'
     import status from '@/store/status'
     import updateScore from '@/utilities/updateScore'
@@ -28,16 +32,31 @@
 
     const emit = defineEmits<{
         (
-            event: 'getFeedback', 
-            choice: number,
+            event: 'getFeedback',
             isCorrect: boolean
         ): void
     }>()
 
+    const wasClicked: Ref<boolean> = ref(false)
+
+    const styling: ComputedRef<IChoiceStyling> = computed(() => {
+        const muted: boolean = props.wasAnswered || time.value === 0 || status.hasWon || status.hasLost
+        const red: boolean = !props.isCorrect && (time.value === 0 || props.wasAnswered) && wasClicked.value
+        const green: boolean = props.isCorrect && (time.value === 0 || props.wasAnswered)
+        const stylingObject: IChoiceStyling = {
+            muted,
+            red,
+            green
+        }
+
+        return stylingObject
+    })
+
     function grade(): void {
         if (!props.wasAnswered && time.value !== 0) {
+            wasClicked.value = true
             updateScore(props.level, props.isCorrect)
-            emit('getFeedback', props.choice, props.isCorrect)
+            emit('getFeedback', props.isCorrect)
         }
     }
 </script>
