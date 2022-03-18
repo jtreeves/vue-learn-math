@@ -35,12 +35,6 @@ describe('useQuestion composable', () => {
         expect(typeof composable.answer.value).toBe('number')
     })
 
-    it('should provide an object called selection with a value of type number as a property on the returned object', () => {
-        expect(composable).toHaveProperty('selection')
-        expect(typeof composable.selection).toBe('object')
-        expect(typeof composable.selection.value).toBe('number')
-    })
-
     it('should provide an object called level with a value of type number as a property on the returned object', () => {
         expect(composable).toHaveProperty('level')
         expect(typeof composable.level).toBe('object')

@@ -13,9 +13,13 @@ interface IAnswer {
     wasCorrect: boolean
 }
 
-interface IFeedback {
+interface IFeedbackStyling {
     red: boolean
     green: boolean
+}
+
+interface IChoiceStyling extends IFeedbackStyling {
+    muted: boolean
 }
 
 interface IScore {
@@ -52,11 +56,10 @@ interface QuestionComposable {
     choices: Ref<number[]>
     answer: Ref<number>
     level: Ref<number>
-    selection: Ref<number>
     wasAnswered: Ref<boolean>
     wasCorrect: Ref<boolean>
     updateQuestion(): void
-    showAnswer(choice: number, isCorrect: boolean): void
+    showAnswer(isCorrect: boolean): void
     determineCorrect(answer: number): boolean
     resetQuestion(): void
 }
@@ -76,7 +79,8 @@ interface LandingPagesComposable {
 export type {
     IQuestion,
     IAnswer,
-    IFeedback,
+    IChoiceStyling,
+    IFeedbackStyling,
     IScore,
     IStrikes,
     IStatus,

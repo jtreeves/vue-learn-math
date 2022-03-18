@@ -1,12 +1,12 @@
 <template>
     <article>
-        <p :class="styling">
+        <p :class="props.styling">
             {{ feedback }}
         </p>
 
         <GenericButton 
-            :text="status.value ? 'Next' : 'Play Again'"
-            @click="status.value ? emit('getQuestion') : emit('playAgain')"
+            :text="buttonText"
+            @click="handleClick"
         />
     </article>
 </template>
@@ -17,16 +17,17 @@
         ComputedRef 
     } from 'vue'
     import {
-        IFeedback
+        IFeedbackStyling
     } from '@/interfaces'
     import status from '@/store/status'
+    import score from '@/store/score'
     import GenericButton from './GenericButton.vue'
 
     const props = defineProps<{
         answer: number
-        selection: number
         wasCorrect: boolean
-        wasAnswered: boolean
+        wasAnswered: boolean,
+        styling: IFeedbackStyling
     }>()
 
     const emit = defineEmits<{
@@ -34,32 +35,45 @@
         (event: 'playAgain'): void
     }>()
 
-    const gameOverMessage: string = status.hasWon ? 'YOU WON!' : 'YOU LOST!'
-    const strikeMessage: string = 'You did not answer the question. YOU GET A STRIKE!'
-    const answerMessage: string = `The answer was ${props.answer}. You were ${props.wasCorrect ? 'CORRECT' : 'INCORRECT'}!`
+    const feedback: ComputedRef<string> = computed(() => {
+        if (status.hasWon || status.hasLost) {
+            const winMessage: string = `You got ${score.value} points. YOU WON!`
+            const loseMessage: string = 'You got 3 strikes. YOU LOST!'
+            const gameOverMessage: string = status.hasWon ? winMessage : loseMessage
 
-    let feedback: string = ''
-
-    if (status.hasWon || status.hasLost) {
-        feedback = gameOverMessage
-    } else {
-        if (!props.wasAnswered) {
-            feedback = strikeMessage
+            return gameOverMessage
         } else {
-            feedback = answerMessage
+            if (!props.wasAnswered) {
+                const strikeMessage: string = 'You did not answer the question. YOU GOT A STRIKE!'
+
+                return strikeMessage
+            } else {
+                const answerMessage: string = `The answer was ${props.answer}. You were ${props.wasCorrect ? 'CORRECT' : 'INCORRECT'}!`
+
+                return answerMessage
+            }
+        }
+    })
+
+    const buttonText: ComputedRef<string> = computed(() => {
+        let text: string = ''
+
+        if (status.value) {
+            text = 'Next'
+        } else {
+            text = 'Play Again'
+        }
+
+        return text
+    })
+
+    function handleClick(): void {
+        if (status.value) {
+            emit('getQuestion')
+        } else {
+            emit('playAgain')
         }
     }
-
-    const styling: ComputedRef<IFeedback> = computed(() => {
-        const red: boolean = status.hasLost || !props.wasAnswered || (props.wasAnswered && !props.wasCorrect)
-        const green: boolean = status.hasWon || (props.wasAnswered && props.wasCorrect)
-        const stylingObject: IFeedback = {
-            red,
-            green
-        }
-
-        return stylingObject
-    })
 </script>
 
 <style scoped>

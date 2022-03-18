@@ -13,25 +13,34 @@ describe('FeedbackDetails element', () => {
     const unansweredWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
         props: {
             answer: answer,
-            selection: 0,
             wasCorrect: false,
-            wasAnswered: false
+            wasAnswered: false,
+            styling: {
+                red: true,
+                green: false
+            }
         }
     })
     const correctWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
         props: {
             answer: answer,
-            selection: 5,
             wasCorrect: true,
-            wasAnswered: true
+            wasAnswered: true,
+            styling: {
+                red: false,
+                green: true
+            }
         }
     })
     const incorrectWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
         props: {
             answer: answer,
-            selection: 3,
             wasCorrect: false,
-            wasAnswered: true
+            wasAnswered: true,
+            styling: {
+                red: true,
+                green: false
+            }
         }
     })
 
@@ -62,9 +71,12 @@ describe('FeedbackDetails element', () => {
         const wonWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: answer,
-                selection: 5,
                 wasCorrect: true,
-                wasAnswered: true
+                wasAnswered: true,
+                styling: {
+                    red: false,
+                    green: true
+                }
             }
         })
         
@@ -76,9 +88,12 @@ describe('FeedbackDetails element', () => {
         const lostWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: answer,
-                selection: 3,
                 wasCorrect: false,
-                wasAnswered: true
+                wasAnswered: true,
+                styling: {
+                    red: true,
+                    green: false
+                }
             }
         })
 
@@ -133,9 +148,12 @@ describe('FeedbackDetails element', () => {
         const wonWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: answer,
-                selection: 5,
                 wasCorrect: true,
-                wasAnswered: true
+                wasAnswered: true,
+                styling: {
+                    red: false,
+                    green: true
+                }
             }
         })
 
@@ -148,9 +166,12 @@ describe('FeedbackDetails element', () => {
         const lostWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
                 answer: answer,
-                selection: 5,
                 wasCorrect: true,
-                wasAnswered: true
+                wasAnswered: true,
+                styling: {
+                    red: false,
+                    green: true
+                }
             }
         })
 
