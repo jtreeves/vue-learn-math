@@ -7,9 +7,20 @@ interface IQuestion {
     choices: number[]
 }
 
-interface IAnswer {
+interface ILevelType {
     level: number
     type: string
+}
+
+interface IValueNumber {
+    value: number
+}
+
+interface IReset {
+    reset(): void
+}
+
+interface IAnswer extends ILevelType {
     wasCorrect: boolean
 }
 
@@ -22,41 +33,34 @@ interface IMutedStyling {
     muted: boolean
 }
 
-interface IScore {
-    value: number
+interface IScore extends IValueNumber, IReset {
     increment(points: number): void
     decrement(points: number): void
-    reset(): void
 }
 
-interface IStatus {
+interface IStatus extends IReset {
     value: boolean
     hasWon: boolean
     hasLost: boolean
     setHasWon(): void
     setHasLost(): void
     check(): void
-    reset(): void
 }
 
-interface IStrikes {
-    value: number
+interface IStrikes extends IValueNumber, IReset {
     increment(): void
-    reset(): void
 }
 
-interface ITime {
-    value: number
+interface ITime extends IValueNumber, IReset {
     decrement(): void
-    reset(): void
 }
 
 interface QuestionComposable {
     question: Ref<string>
     choices: Ref<number[]>
     answer: Ref<number>
-    level: Ref<number>
     selection: Ref<number>
+    level: Ref<number>
     wasAnswered: Ref<boolean>
     wasCorrect: Ref<boolean>
     updateQuestion(): void
@@ -86,6 +90,7 @@ export type {
     IStrikes,
     IStatus,
     ITime,
+    ILevelType,
     QuestionComposable,
     InstructionsComposable,
     LandingPagesComposable

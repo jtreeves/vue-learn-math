@@ -5,34 +5,37 @@ import {
 import { 
     IAnswer,
     IQuestion, 
+    ILevelType,
     QuestionComposable 
 } from '@/interfaces'
-import playTime from '@/utilities/playTime'
-import resetGame from '@/utilities/resetGame'
+import chooseLevelType from '@/utilities/chooseLevelType'
 import generateQuestion from '@/utilities/generateQuestion'
 import shuffleChoices from '@/utilities/shuffleChoices'
+import resetGame from '@/utilities/resetGame'
+import playTime from '@/utilities/playTime'
 
 function useQuestion(): QuestionComposable {
-    const type: Ref<string> = ref('addition')
-    const level: Ref<number> = ref(1)
     const selectedChoice: Ref<number> = ref(NaN)
     const wasAnswered: Ref<boolean> = ref(false)
     const wasCorrect: Ref<boolean> = ref(false)
     const answerHistory: Ref<IAnswer[]> = ref([])
 
-    const initialSet: IQuestion = generateQuestion(
-        level.value, 
-        type.value
+    const initialSpecs: ILevelType = chooseLevelType(
+        answerHistory.value
     )
-
-    const question: Ref<string> = ref(initialSet.question)
-    const choices: Ref<number[]> = ref(initialSet.choices)
-    const correctAnswer: Ref<number> = ref(initialSet.choices[0])
-
+    const initialSet: IQuestion = generateQuestion(
+        initialSpecs.level, 
+        initialSpecs.type
+    )
     const initialRandoms: number[] = shuffleChoices(
         initialSet.choices
     )
 
+    const type: Ref<string> = ref(initialSpecs.type)
+    const level: Ref<number> = ref(initialSpecs.level)
+    const question: Ref<string> = ref(initialSet.question)
+    const choices: Ref<number[]> = ref(initialSet.choices)
+    const correctAnswer: Ref<number> = ref(initialSet.choices[0])
     const randomChoices: Ref<number[]> = ref(initialRandoms)
 
     function determineCorrect(
@@ -46,23 +49,23 @@ function useQuestion(): QuestionComposable {
     }
 
     function updateQuestion(): void {
-        level.value = 1
-        type.value = 'addition'
-        
+        const updatedSpecs: ILevelType = chooseLevelType(
+            answerHistory.value
+        )
         const updatedSet: IQuestion = generateQuestion(
-            level.value, 
-            type.value,
+            updatedSpecs.level, 
+            updatedSpecs.type,
             question.value
         )
-        
-        question.value = updatedSet.question
-        choices.value = updatedSet.choices
-        correctAnswer.value = updatedSet.choices[0]
-
         const updatedRandoms: number[] = shuffleChoices(
             updatedSet.choices
         )
 
+        level.value = updatedSpecs.level
+        type.value = updatedSpecs.type
+        question.value = updatedSet.question
+        choices.value = updatedSet.choices
+        correctAnswer.value = updatedSet.choices[0]
         randomChoices.value = updatedRandoms
         wasAnswered.value = false
         selectedChoice.value = NaN
