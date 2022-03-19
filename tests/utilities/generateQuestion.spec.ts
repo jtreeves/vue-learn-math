@@ -73,7 +73,18 @@ describe('generateQuestion utility', () => {
         for (let i = 0; i < 10; i++) {
             const previousQuestion: string = '1 + 1'
             const newQuestion: IQuestion = generateQuestion(1, 'addition', '1 + 1')
+
             expect(newQuestion).not.toBe(previousQuestion)
+        }
+    })
+
+    it('should not return question with a decimal answer', () => {
+        for (let i = 0; i < 10; i++) {
+            const newQuestion: IQuestion = generateQuestion(1, 'division')
+            const newAnswer: number = newQuestion.choices[0]
+            const isInteger: boolean = Math.floor(newAnswer) === newAnswer
+
+            expect(isInteger).toBe(true)
         }
     })
 })

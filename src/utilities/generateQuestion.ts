@@ -12,6 +12,7 @@ function generateQuestion(
     const firstNumber: number = generateNumber(level)
     const secondNumber: number = generateNumber(level)
     const answer: number = generateAnswer(firstNumber, secondNumber, type)
+    const isAnswerInteger: boolean = Math.floor(answer) === answer
     const firstIncorrect: number = answer - 1
     const secondIncorrect: number = answer + 1
     const thirdIncorrect: number = answer + 2
@@ -24,7 +25,7 @@ function generateQuestion(
         choices
     }
 
-    if (previous === result.question) {
+    if (previous === result.question || !isAnswerInteger) {
         result = generateQuestion(level, type, previous)
     }
 
