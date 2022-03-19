@@ -139,35 +139,43 @@ describe('chooseLevelType utility', () => {
         expect(pair.level).toBe(previous[1].level)
     })
 
-    it('should return type subtraction if preceding type was addition', () => {
+    it('should not return type addition if preceding type was addition', () => {
         const previous: IAnswer[] = [answers[0], answers[0]]
-        const pair: ILevelType = chooseLevelType(previous)
-        
-        expect(previous[1].type).toBe('addition')
-        expect(pair.type).toBe('subtraction')
+        for (let i = 0; i < 10; i++) {
+            const pair: ILevelType = chooseLevelType(previous)
+            
+            expect(previous[1].type).toBe('addition')
+            expect(pair.type).not.toBe('addition')
+        }
     })
 
-    it('should return type multiplication if preceding type was subtraction', () => {
+    it('should not return type subtraction if preceding type was subtraction', () => {
         const previous: IAnswer[] = [answers[1], answers[1]]
-        const pair: ILevelType = chooseLevelType(previous)
-        
-        expect(previous[1].type).toBe('subtraction')
-        expect(pair.type).toBe('multiplication')
+        for (let i = 0; i < 10; i++) {
+            const pair: ILevelType = chooseLevelType(previous)
+            
+            expect(previous[1].type).toBe('subtraction')
+            expect(pair.type).not.toBe('subtraction')
+        }
     })
 
-    it('should return type division if preceding type was multiplication', () => {
+    it('should not return type multiplication if preceding type was multiplication', () => {
         const previous: IAnswer[] = [answers[2], answers[2]]
-        const pair: ILevelType = chooseLevelType(previous)
-        
-        expect(previous[1].type).toBe('multiplication')
-        expect(pair.type).toBe('division')
+        for (let i = 0; i < 10; i++) {
+            const pair: ILevelType = chooseLevelType(previous)
+            
+            expect(previous[1].type).toBe('multiplication')
+            expect(pair.type).not.toBe('multiplication')
+        }
     })
 
-    it('should return type addition if preceding type was division', () => {
+    it('should not return type division if preceding type was division', () => {
         const previous: IAnswer[] = [answers[3], answers[3]]
-        const pair: ILevelType = chooseLevelType(previous)
-        
-        expect(previous[1].type).toBe('division')
-        expect(pair.type).toBe('addition')
+        for (let i = 0; i < 10; i++) {
+            const pair: ILevelType = chooseLevelType(previous)
+            
+            expect(previous[1].type).toBe('division')
+            expect(pair.type).not.toBe('division')
+        }
     })
 })
