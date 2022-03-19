@@ -31,12 +31,6 @@ describe('generateQuestion utility', () => {
         expect(answer).toBe(choices[0])
     })
 
-    it('should return incorrect choices 1 before, 1 after, and 2 after the correct answer', () => {
-        expect(choices[1]).toBe(choices[0] - 1)
-        expect(choices[2]).toBe(choices[0] + 1)
-        expect(choices[3]).toBe(choices[0] + 2)
-    })
-
     it('should return question including plus sign if type is addition', () => {
         const newQuestion: IQuestion = generateQuestion(2, 'addition')
         const questionString: string = newQuestion.question

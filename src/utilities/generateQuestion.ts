@@ -2,9 +2,10 @@ import {
     IPair, 
     IQuestion 
 } from '@/interfaces'
+import selectSymbol from './selectSymbol'
 import generatePair from './generatePair'
 import generateAnswer from './generateAnswer'
-import selectSymbol from './selectSymbol'
+import generateChoices from './generateChoices'
 
 function generateQuestion(
     level: number,
@@ -14,20 +15,18 @@ function generateQuestion(
     const symbol: string = selectSymbol(type)
     const pair: IPair = generatePair(level, type)
     const answer: number = generateAnswer(pair.firstNumber, pair.secondNumber, type)
-    const isAnswerInteger: boolean = Math.floor(answer) === answer
-    const firstIncorrect: number = answer - 1
-    const secondIncorrect: number = answer + 1
-    const thirdIncorrect: number = answer + 2
-
+    const choices: number[] = generateChoices(answer, pair.firstNumber, pair.secondNumber, type)
     const question: string = `${pair.firstNumber} ${symbol} ${pair.secondNumber}`
-    const choices: number[] = [answer, firstIncorrect, secondIncorrect, thirdIncorrect]
 
     let result: IQuestion = {
         question,
         choices
     }
 
-    if (previous === result.question || !isAnswerInteger) {
+    if (
+        previous === result.question || 
+        Math.floor(answer) !== answer
+    ) {
         result = generateQuestion(level, type, previous)
     }
 
