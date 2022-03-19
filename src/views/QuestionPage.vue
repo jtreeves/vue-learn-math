@@ -100,6 +100,7 @@
         gap: 20px;
         align-items: center;
         width: 300px;
+        align-self: center;
     }
 
     .red {
