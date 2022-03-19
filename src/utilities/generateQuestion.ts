@@ -5,7 +5,8 @@ import selectSymbol from './selectSymbol'
 
 function generateQuestion(
     level: number,
-    type: string
+    type: string,
+    previous?: string
 ): IQuestion {
     const symbol: string = selectSymbol(type)
     const firstNumber: number = generateNumber(level)
@@ -18,9 +19,13 @@ function generateQuestion(
     const question: string = `${firstNumber} ${symbol} ${secondNumber}`
     const choices: number[] = [answer, firstIncorrect, secondIncorrect, thirdIncorrect]
 
-    const result: IQuestion = {
+    let result: IQuestion = {
         question,
         choices
+    }
+
+    if (previous === result.question) {
+        result = generateQuestion(level, type, previous)
     }
 
     return result
