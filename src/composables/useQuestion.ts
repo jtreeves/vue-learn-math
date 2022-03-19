@@ -88,7 +88,7 @@ function useQuestion(): QuestionComposable {
         answerHistory.value.push(answer)
     }
 
-    function resetQuestion() {
+    function resetQuestion(): void {
         answerHistory.value = []
         resetGame()
         updateQuestion()

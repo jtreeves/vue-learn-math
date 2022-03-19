@@ -29,6 +29,11 @@ interface IFeedbackStyling {
     green: boolean
 }
 
+interface IPair {
+    firstNumber: number
+    secondNumber: number
+}
+
 interface IMutedStyling {
     muted: boolean
 }
@@ -87,6 +92,7 @@ export type {
     IMutedStyling,
     IFeedbackStyling,
     IScore,
+    IPair,
     IStrikes,
     IStatus,
     ITime,
