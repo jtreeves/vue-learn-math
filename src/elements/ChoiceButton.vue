@@ -1,8 +1,8 @@
 <template>
-    <li>
+    <li :class="feedbackStyling">
         <GenericButton 
             :text="props.choice.toString()"
-            :class="styling"
+            :class="mutedStyling"
             @click="grade"
         />
     </li>
@@ -10,13 +10,12 @@
 
 <script setup lang="ts">
     import {
-        ref,
-        Ref,
         computed,
         ComputedRef
     } from 'vue'
     import {
-        IChoiceStyling
+        IMutedStyling,
+        IFeedbackStyling
     } from '@/interfaces'
     import time from '@/store/time'
     import status from '@/store/status'
@@ -25,6 +24,7 @@
 
     const props = defineProps<{
         choice: number
+        selection: number
         level: number
         wasAnswered: boolean
         isCorrect: boolean
@@ -33,18 +33,24 @@
     const emit = defineEmits<{
         (
             event: 'getFeedback',
+            choice: number,
             isCorrect: boolean
         ): void
     }>()
 
-    const wasClicked: Ref<boolean> = ref(false)
-
-    const styling: ComputedRef<IChoiceStyling> = computed(() => {
+    const mutedStyling: ComputedRef<IMutedStyling> = computed(() => {
         const muted: boolean = props.wasAnswered || time.value === 0 || status.hasWon || status.hasLost
-        const red: boolean = !props.isCorrect && (time.value === 0 || props.wasAnswered) && wasClicked.value
+        const stylingObject: IMutedStyling = {
+            muted
+        }
+
+        return stylingObject
+    })
+
+    const feedbackStyling: ComputedRef<IFeedbackStyling> = computed(() => {
+        const red: boolean = !props.isCorrect && (time.value === 0 || props.wasAnswered) && props.selection === props.choice
         const green: boolean = props.isCorrect && (time.value === 0 || props.wasAnswered)
-        const stylingObject: IChoiceStyling = {
-            muted,
+        const stylingObject: IFeedbackStyling = {
             red,
             green
         }
@@ -54,9 +60,8 @@
 
     function grade(): void {
         if (!props.wasAnswered && time.value !== 0) {
-            wasClicked.value = true
             updateScore(props.level, props.isCorrect)
-            emit('getFeedback', props.isCorrect)
+            emit('getFeedback', props.choice, props.isCorrect)
         }
     }
 </script>
