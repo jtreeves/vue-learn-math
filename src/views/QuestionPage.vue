@@ -99,6 +99,7 @@
         flex-direction: column;
         gap: 20px;
         align-items: center;
+        width: 300px;
     }
 
     .red {
