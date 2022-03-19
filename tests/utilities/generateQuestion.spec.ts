@@ -68,4 +68,12 @@ describe('generateQuestion utility', () => {
 
         expect(includesSlash).toBe(true)
     })
+
+    it('should not return new question matching previous question', () => {
+        for (let i = 0; i < 10; i++) {
+            const previousQuestion: string = '1 + 1'
+            const newQuestion: IQuestion = generateQuestion(1, 'addition', '1 + 1')
+            expect(newQuestion).not.toBe(previousQuestion)
+        }
+    })
 })

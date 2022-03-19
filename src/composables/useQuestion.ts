@@ -51,7 +51,8 @@ function useQuestion(): QuestionComposable {
         
         const updatedSet: IQuestion = generateQuestion(
             level.value, 
-            type.value
+            type.value,
+            question.value
         )
         
         question.value = updatedSet.question
