@@ -29,6 +29,12 @@ function generatePair(
                 pair.secondNumber = generateNumber(1)
             } else if (level === 3 || level === 4) {
                 pair.secondNumber = generateNumber(2)
+
+                if (level === 3) {
+                    pair.firstNumber = generateNumber(2)
+                } else {
+                    pair.firstNumber = generateNumber(3)
+                }
             }
 
             break
