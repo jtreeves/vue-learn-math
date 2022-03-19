@@ -33,6 +33,14 @@ interface IMutedStyling {
     muted: boolean
 }
 
+interface IStrikes extends IValueNumber, IReset {
+    increment(): void
+}
+
+interface ITime extends IValueNumber, IReset {
+    decrement(): void
+}
+
 interface IScore extends IValueNumber, IReset {
     increment(points: number): void
     decrement(points: number): void
@@ -45,14 +53,6 @@ interface IStatus extends IReset {
     setHasWon(): void
     setHasLost(): void
     check(): void
-}
-
-interface IStrikes extends IValueNumber, IReset {
-    increment(): void
-}
-
-interface ITime extends IValueNumber, IReset {
-    decrement(): void
 }
 
 interface QuestionComposable {
