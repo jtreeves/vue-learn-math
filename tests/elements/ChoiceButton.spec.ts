@@ -12,9 +12,10 @@ describe('ChoiceButton element', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = mount(ChoiceButton, {
         props: {
             choice: choice,
+            selection: 3,
             level: 1,
             isCorrect: false,
-            wasAnswered: false
+            wasAnswered: true
         }
     })
 

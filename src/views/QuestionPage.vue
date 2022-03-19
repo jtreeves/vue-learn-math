@@ -10,6 +10,7 @@
                     v-for="choice in choices"
                     :key="choice"
                     :choice="choice"
+                    :selection="selection"
                     :level="level"
                     :was-answered="wasAnswered"
                     :is-correct="determineCorrect(choice)"
@@ -57,6 +58,7 @@
         question,
         choices,
         answer,
+        selection,
         level,
         wasAnswered,
         wasCorrect,
@@ -76,7 +78,7 @@
 
         return stylingObject
     })
-    
+
     onMounted(() => {
         playTime(wasAnswered)
     })
