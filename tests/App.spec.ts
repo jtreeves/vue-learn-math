@@ -28,10 +28,6 @@ describe('App component', () => {
         expect(wrapper.text()).toMatch('Learn Math')
     })
 
-    it('should display Status from score board', () => {
-        expect(wrapper.text()).toMatch('Status')
-    })
-
     it('should display Strikes from score board', () => {
         expect(wrapper.text()).toMatch('Strikes')
     })

@@ -18,10 +18,6 @@ describe('AppHeader element', () => {
         expect(wrapper.find('Rubiks Cube')).toBeTruthy()
     })
 
-    it('should display Status from score board', () => {
-        expect(wrapper.text()).toMatch('Status')
-    })
-
     it('should display Strikes from score board', () => {
         expect(wrapper.text()).toMatch('Strikes')
     })

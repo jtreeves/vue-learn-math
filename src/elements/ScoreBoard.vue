@@ -1,15 +1,11 @@
 <template>
     <section>
         <article>
-            Status: {{ status.value }}
-        </article>
-
-        <article>
             Strikes: {{ strikes.value }}
         </article>
 
         <article>
-            Time: {{ time.value }}
+            Time: {{ time.value }}s
         </article>
 
         <article>
@@ -22,5 +18,11 @@
     import score from '@/store/score'
     import time from '@/store/time'
     import strikes from '@/store/strikes'
-    import status from '@/store/status'
 </script>
+
+<style scoped>
+    article {
+        padding: 10px;
+        border: 3px solid darkblue;
+    }
+</style>
