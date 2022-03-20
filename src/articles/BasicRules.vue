@@ -10,7 +10,7 @@
             </h3>
 
             <p>
-                You have 5 seconds to answer each question. If you don't answer the question before your time is up, you get a strike!
+                You have 10 seconds to answer each question. If you don't answer the question before your time is up, you get a strike!
             </p>
         </div>
 
