@@ -15,3 +15,12 @@
         step: number
     }>()
 </script>
+
+<style scoped>
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+</style>
