@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-    import { 
+    import {
         computed, 
-        ComputedRef 
+        ComputedRef
     } from 'vue'
     import {
         IFeedbackStyling
@@ -37,8 +37,8 @@
 
     const feedback: ComputedRef<string> = computed(() => {
         if (status.hasWon || status.hasLost) {
-            const winMessage: string = `You got ${score.value} points. YOU WON!`
-            const loseMessage: string = 'You got 3 strikes. YOU LOST!'
+            const winMessage: string = `You got ${score.value} points and won!`
+            const loseMessage: string = 'You got 3 strikes and lost!'
             const gameOverMessage: string = status.hasWon ? winMessage : loseMessage
 
             return gameOverMessage
