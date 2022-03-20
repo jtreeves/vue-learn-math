@@ -42,6 +42,9 @@
     img {
         height: 300px;
         width: 300px;
+        object-fit: cover;
+        border: 5px solid darkblue;
+        border-radius: 4px;
     }
 
     aside {
