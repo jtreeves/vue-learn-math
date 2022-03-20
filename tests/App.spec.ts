@@ -24,8 +24,8 @@ describe('App component', () => {
         }
     })
 
-    it('should display Learn Math heading', () => {
-        expect(wrapper.text()).toMatch('Learn Math')
+    it('should display Math Attack! heading', () => {
+        expect(wrapper.text()).toMatch('Math Attack!')
     })
 
     it('should display Strikes from score board', () => {

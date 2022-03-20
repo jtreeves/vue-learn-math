@@ -10,7 +10,7 @@
 
             <RouterLink to="/home">
                 <span>
-                    Learn Math
+                    Math Attack!
                 </span>
             </RouterLink>
         </section>
