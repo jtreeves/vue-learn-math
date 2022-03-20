@@ -1,6 +1,8 @@
 <template>
     <main>
-        <h1>Question</h1>
+        <h1 :class="headingStyling">
+            {{ heading }}
+        </h1>
 
         <section>
             <h2>{{ question }}</h2>
@@ -45,7 +47,8 @@
     } from 'vue'
     import { 
         QuestionComposable,
-        IFeedbackStyling
+        IFeedbackStyling,
+        IHeadingStyling
     } from '@/interfaces'
     import playTime from '@/utilities/playTime'
     import resetGame from '@/utilities/resetGame'
@@ -71,6 +74,31 @@
         resetQuestion
     }: QuestionComposable = useQuestion()
 
+    const heading: ComputedRef<string> = computed(() => {
+        let text: string = ''
+
+        if (status.hasWon) {
+            text = 'YOU WIN!'
+        } else if (status.hasLost) {
+            text = 'YOU LOSE!'
+        } else {
+            text = 'Question'
+        }
+
+        return text
+    })
+    
+    const headingStyling: ComputedRef<IHeadingStyling> = computed(() => {
+        const redText: boolean = status.hasLost
+        const greenText: boolean = status.hasWon
+        const stylingObject: IHeadingStyling = {
+            redText,
+            greenText
+        }
+
+        return stylingObject
+    })
+    
     const styling: ComputedRef<IFeedbackStyling> = computed(() => {
         const red: boolean = status.hasLost || (time.value === 0 && !wasAnswered.value) || (wasAnswered.value && !wasCorrect.value)
         const green: boolean = status.hasWon || (wasAnswered.value && wasCorrect.value)
@@ -122,5 +150,13 @@
         padding: 10px;
         border: 5px solid green;
         border-radius: 4px;
+    }
+
+    .redText {
+        color: red;
+    }
+
+    .greenText {
+        color: green;
     }
 </style>

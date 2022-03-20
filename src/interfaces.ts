@@ -29,6 +29,11 @@ interface IFeedbackStyling {
     green: boolean
 }
 
+interface IHeadingStyling {
+    redText: boolean
+    greenText: boolean
+}
+
 interface IPair {
     firstNumber: number
     secondNumber: number
@@ -36,6 +41,10 @@ interface IPair {
 
 interface IMutedStyling {
     muted: boolean
+}
+
+interface IBoardStyling extends IFeedbackStyling {
+    blue: boolean
 }
 
 interface IStrikes extends IValueNumber, IReset {
@@ -92,6 +101,8 @@ export type {
     IAnswer,
     IMutedStyling,
     IFeedbackStyling,
+    IBoardStyling,
+    IHeadingStyling,
     IScore,
     IPair,
     IStrikes,

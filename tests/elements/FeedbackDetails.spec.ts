@@ -66,7 +66,7 @@ describe('FeedbackDetails element', () => {
         expect(incorrectWrapper.findAll('button').length).toBe(1)
     })
 
-    it('should display the word WON if status.hasWon property is true', () => {
+    it('should display the word won if status.hasWon property is true', () => {
         status.setHasWon()
         const wonWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
@@ -80,10 +80,10 @@ describe('FeedbackDetails element', () => {
             }
         })
         
-        expect(wonWrapper.text()).toMatch('WON')
+        expect(wonWrapper.text()).toMatch('won')
     })
 
-    it('should display the word LOST if status.hasLost property is true', () => {
+    it('should display the word lost if status.hasLost property is true', () => {
         status.setHasLost()
         const lostWrapper: VueWrapper<ComponentPublicInstance> = mount(FeedbackDetails, {
             props: {
@@ -97,7 +97,7 @@ describe('FeedbackDetails element', () => {
             }
         })
 
-        expect(lostWrapper.text()).toMatch('LOST')
+        expect(lostWrapper.text()).toMatch('lost')
     })
 
     it('should display the word STRIKE if wasAnswered property is false', () => {
