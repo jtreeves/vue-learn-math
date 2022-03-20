@@ -1,6 +1,6 @@
 # Learn Math
 
-*A repository for a Vue app*
+*Repository for the [Learn Math](https://vue-learn-math.netlify.app/home) online game*
 
 **Contents**
 
@@ -27,6 +27,8 @@ This is a simple online game for reviewing basic arithmetic concepts. It's writt
 
 1. Run `npm run serve` within your local directory
 2. View the live version of the site at `http://localhost:8080`
+
+Alternatively, you may use the live version of the [Learn Math](https://vue-learn-math.netlify.app/home) app, deployed via Netlify
 
 ## Features
 
@@ -152,6 +154,5 @@ This repository uses **Jest** for testing. It should be one of the dev dependenc
 
 ## Future Goals
 
-- Publicly deployed site via a service like Netlify
 - More tests to increase code coverage, handle edge cases, and test UI's functionality, which may require implementing Cypress for integration tests
 - Improve styling for a more enjoyable user experience
