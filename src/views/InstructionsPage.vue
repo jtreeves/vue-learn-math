@@ -2,10 +2,6 @@
     <main>
         <h1>Instructions</h1>
 
-        <p>Learn how to play the game.</p>
-
-        <p>Current step: {{ step }}</p>
-
         <CurrentInstruction 
             :step="step"
         />
@@ -18,19 +14,19 @@
             />
             
             <GenericButton 
-                v-if="step === 2 || step === 3"
+                v-if="step !== 1"
                 text="Previous Step"
                 @click="loadPrevious"
             />
             
             <GenericButton 
-                v-if="step === 1 || step === 2"
+                v-if="step !== 4"
                 text="Next Step"
                 @click="loadNext"
             />
             
             <GenericButton 
-                v-if="step === 3"
+                v-if="step === 4"
                 text="Play Game"
                 @click="playGame"
             />

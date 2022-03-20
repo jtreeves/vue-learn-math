@@ -29,10 +29,6 @@ describe('InstructionsPage view', () => {
         expect(wrapper.text()).toMatch('Instructions')
     })
 
-    it('should display introductory paragraph', () => {
-        expect(wrapper.text()).toMatch('how to play the game')
-    })
-
     it('should render 1 main tag', () => {
         expect(wrapper.findAll('main').length).toBe(1)
     })
@@ -41,7 +37,7 @@ describe('InstructionsPage view', () => {
         expect(wrapper.findAll('aside').length).toBe(1)
     })
 
-    it('should display first set of instructions, home button, and next button when path is /instructions/1', async () => {
+    it('should display Basic Rules heading, home button, and next button when path is /instructions/1', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -55,12 +51,12 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('article').text()).toMatch('First set of instructions.')
+        expect(wrapper.find('h2').text()).toMatch('Basic Rules')
         expect(buttons[0].text()).toMatch('Back Home')
         expect(buttons[1].text()).toMatch('Next Step')
     })
 
-    it('should display second set of instructions, previous button, and next button when path is /instructions/2', async () => {
+    it('should display Questions heading, previous button, and next button when path is /instructions/2', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
             routes 
@@ -74,15 +70,15 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('article').text()).toMatch('Second set of instructions.')
+        expect(wrapper.find('h2').text()).toMatch('Questions')
         expect(buttons[0].text()).toMatch('Previous Step')
         expect(buttons[1].text()).toMatch('Next Step')
     })
 
-    it('should display third set of instructions, previous button, and play button when path is /instructions/3', async () => {
+    it('should display Feedback heading, previous button, and next button when path is /instructions/3', async () => {
         const router: Router = createRouter({ 
             history: createMemoryHistory(),
-            routes
+            routes 
         })
         router.push('/instructions/3')
         await router.isReady()
@@ -93,7 +89,26 @@ describe('InstructionsPage view', () => {
         })
         const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
     
-        expect(wrapper.find('article').text()).toMatch('Third set of instructions.')
+        expect(wrapper.find('h2').text()).toMatch('Feedback')
+        expect(buttons[0].text()).toMatch('Previous Step')
+        expect(buttons[1].text()).toMatch('Next Step')
+    })
+
+    it('should display Winning and Losing heading, previous button, and play button when path is /instructions/4', async () => {
+        const router: Router = createRouter({ 
+            history: createMemoryHistory(),
+            routes
+        })
+        router.push('/instructions/4')
+        await router.isReady()
+        const wrapper: VueWrapper<ComponentPublicInstance> = mount(InstructionsPage, { 
+            global: {
+                plugins: [router]
+            }
+        })
+        const buttons: DOMWrapper<HTMLButtonElement>[] = wrapper.findAll('button')
+    
+        expect(wrapper.find('h2').text()).toMatch('Winning and Losing')
         expect(buttons[0].text()).toMatch('Previous Step')
         expect(buttons[1].text()).toMatch('Play Game')
     })

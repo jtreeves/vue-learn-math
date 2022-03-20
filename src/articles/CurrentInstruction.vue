@@ -1,15 +1,15 @@
 <template>
-    <article>
-        <FirstInstruction v-if="props.step === 1" />
-        <SecondInstruction v-if="props.step === 2" />
-        <ThirdInstruction v-if="props.step === 3" />
-    </article>
+    <BasicRules v-if="props.step === 1" />
+    <SingleQuestion v-if="props.step === 2" />
+    <ProvidedFeedback v-if="props.step === 3" />
+    <EndConditions v-if="props.step === 4" />
 </template>
 
 <script setup lang="ts">
-    import FirstInstruction from './FirstInstruction.vue'
-    import SecondInstruction from './SecondInstruction.vue'
-    import ThirdInstruction from './ThirdInstruction.vue'
+    import BasicRules from './BasicRules.vue'
+    import SingleQuestion from './SingleQuestion.vue'
+    import ProvidedFeedback from './ProvidedFeedback.vue'
+    import EndConditions from './EndConditions.vue'
 
     const props = defineProps<{
         step: number

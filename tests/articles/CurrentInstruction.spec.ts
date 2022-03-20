@@ -11,44 +11,44 @@ import CurrentInstruction from '@/articles/CurrentInstruction.vue'
 
 config.global.plugins = [router]
 
-describe('CurrentInstruction step', () => {
-    it('should render 1 article tag', () => {
+describe('CurrentInstruction article', () => {
+    it('should display Basic Rules heading when step prop is 1', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
                 step: 1
             }
         })
     
-        expect(wrapper.findAll('article').length).toBe(1)
+        expect(wrapper.find('h2').text()).toMatch('Basic Rules')
     })
     
-    it('should display first set of instructions when step prop is 1', () => {
-        const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
-            props: {
-                step: 1
-            }
-        })
-    
-        expect(wrapper.text()).toMatch('First set of instructions.')
-    })
-    
-    it('should display second set of instructions when step prop is 2', () => {
+    it('should display Questions heading when step prop is 2', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
                 step: 2
             }
         })
     
-        expect(wrapper.text()).toMatch('Second set of instructions.')
+        expect(wrapper.find('h2').text()).toMatch('Questions')
     })
     
-    it('should display third set of instructions when step prop is 3', () => {
+    it('should display Feedback heading when step prop is 3', () => {
         const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
             props: {
                 step: 3
             }
         })
     
-        expect(wrapper.text()).toMatch('Third set of instructions.')
+        expect(wrapper.find('h2').text()).toMatch('Feedback')
+    })
+    
+    it('should display Winning and Losing heading when step prop is 4', () => {
+        const wrapper: VueWrapper<ComponentPublicInstance> = mount(CurrentInstruction, {
+            props: {
+                step: 4
+            }
+        })
+    
+        expect(wrapper.find('h2').text()).toMatch('Winning and Losing')
     })
 })

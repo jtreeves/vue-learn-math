@@ -26,4 +26,4 @@ export function withSetup(composable: any) {
 
 export default config
 
-// Ran 230 passing tests in 6.562s on 3/19/22
+// Ran 243 passing tests in 4.365s on 3/19/22
