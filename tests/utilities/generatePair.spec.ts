@@ -204,7 +204,7 @@ describe('generatePair utility', () => {
         expect(secondLength).toBe(1)
     })
 
-    it('should return a 3-digit first number and a 1-digit second number if level is 3 and type is division', () => {
+    it('should return a 3-digit first number and a 2-digit second number if level is 3 and type is division', () => {
         const newPair: IPair = generatePair(3, 'division')
         const first: number = newPair.firstNumber
         const second: number = newPair.secondNumber
@@ -214,10 +214,10 @@ describe('generatePair utility', () => {
         const secondLength: number = secondString.length
 
         expect(firstLength).toBe(3)
-        expect(secondLength).toBe(1)
+        expect(secondLength).toBe(2)
     })
 
-    it('should return a 4-digit first number and a 1-digit second number if level is 4 and type is division', () => {
+    it('should return a 4-digit first number and a 2-digit second number if level is 4 and type is division', () => {
         const newPair: IPair = generatePair(4, 'division')
         const first: number = newPair.firstNumber
         const second: number = newPair.secondNumber
@@ -227,6 +227,6 @@ describe('generatePair utility', () => {
         const secondLength: number = secondString.length
 
         expect(firstLength).toBe(4)
-        expect(secondLength).toBe(1)
+        expect(secondLength).toBe(2)
     })
 })

@@ -9,10 +9,10 @@ describe('time store', () => {
         expect(typeof time).toBe('object')
     })
 
-    it('should contain value property of type number, initialized at 5', () => {
+    it('should contain value property of type number, initialized at 10', () => {
         expect(time).toHaveProperty('value')
         expect(typeof time.value).toBe('number')
-        expect(time.value).toEqual(5)
+        expect(time.value).toEqual(10)
     })
 
     it('should contain decrement property of type function', () => {
@@ -33,7 +33,7 @@ describe('time store', () => {
         expect(updatedTime).toBe(currentTime - 1)
     })
 
-    it('should set value back to 5 when invoke reset', () => {
+    it('should set value back to 10 when invoke reset', () => {
         const initialTime: number = time.value
         time.decrement()
         const updatedTime: number = time.value
@@ -41,12 +41,12 @@ describe('time store', () => {
         const finalTime: number = time.value
         
         expect(updatedTime).not.toBe(initialTime)
-        expect(updatedTime).not.toBe(5)
-        expect(finalTime).toBe(5)
+        expect(updatedTime).not.toBe(10)
+        expect(finalTime).toBe(10)
     })
 
     it('should persist changes to time state across instances', () => {
-        let remoteTime: number = 5
+        let remoteTime: number = 10
 
         function firstInstance() {
             time.decrement()
@@ -59,8 +59,8 @@ describe('time store', () => {
         firstInstance()
         secondInstance()
 
-        expect(time.value).not.toBe(5)
-        expect(remoteTime).not.toBe(5)
+        expect(time.value).not.toBe(10)
+        expect(remoteTime).not.toBe(10)
         expect(remoteTime).toBe(time.value)
     })
 })

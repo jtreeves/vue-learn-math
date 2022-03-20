@@ -39,7 +39,12 @@ function generatePair(
 
             break
         case 'division':
-            pair.secondNumber = generateNumber(1)
+            if (level === 2) {
+                pair.secondNumber = generateNumber(1)
+            } else if (level === 3 || level === 4) {
+                pair.secondNumber = generateNumber(2)
+            }
+
             break
     }
 

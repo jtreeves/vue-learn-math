@@ -13,7 +13,7 @@ describe('resetGame utility', () => {
         expect(typeof resetGame).toBe('function')
     })
 
-    it('should set score value back to 0, strikes value back to 0, time value back to 5, and status value back to true when invoked', () => {
+    it('should set score value back to 0, strikes value back to 0, time value back to 10, and status value back to true when invoked', () => {
         const initialScore: number = score.value
         const initialStrikes: number = strikes.value
         const initialTime: number = time.value
@@ -44,8 +44,8 @@ describe('resetGame utility', () => {
         expect(updatedStrikes).not.toBe(0)
         expect(finalStrikes).toBe(0)
         expect(updatedTime).not.toBe(initialTime)
-        expect(updatedTime).not.toBe(5)
-        expect(finalTime).toBe(5)
+        expect(updatedTime).not.toBe(10)
+        expect(finalTime).toBe(10)
         expect(updatedStatus).not.toBe(initialStatus)
         expect(updatedStatus).not.toBe(true)
         expect(finalStatus).toBe(true)
