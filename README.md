@@ -149,7 +149,7 @@ function useLandingPages(): LandingPagesComposable {
 
 This repository uses **Jest** for testing. It should be one of the dev dependencies initially installed.
 
-- The app features 246 passing automated tests
+- The app features 252 passing automated tests
 - To check them, run `npm run test`
 
 ## Future Goals

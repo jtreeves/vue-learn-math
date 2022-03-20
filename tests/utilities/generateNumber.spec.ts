@@ -18,6 +18,13 @@ describe('generateNumber utility', () => {
         }
     })
     
+    it('should never return 1', () => {
+        for (let i = 0; i < 10; i++) {
+            const newNumber: number = generateNumber(1)
+            expect(newNumber).not.toBe(1)
+        }
+    })
+    
     it('should return a 1-digit number if level is 1', () => {
         const newNumber: number = generateNumber(1)
         const newString: string = String(newNumber)
