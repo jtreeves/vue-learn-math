@@ -5,7 +5,6 @@ import {
 import { 
     LandingPagesComposable 
 } from '@/interfaces'
-import resetGame from '@/utilities/resetGame'
 
 function useLandingPages(): LandingPagesComposable {
     const router: Router = useRouter()
@@ -15,7 +14,6 @@ function useLandingPages(): LandingPagesComposable {
     }
 
     function playGame(): void {
-        resetGame()
         router.push('/question')
     }
 
