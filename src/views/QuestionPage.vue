@@ -82,6 +82,7 @@
     })
 
     onMounted(() => {
+        resetGame()
         playTime(wasAnswered)
     })
 
