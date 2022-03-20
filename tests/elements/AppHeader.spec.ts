@@ -14,8 +14,8 @@ describe('AppHeader element', () => {
         expect(wrapper.text()).toMatch('Learn Math')
     })
 
-    it('should display Rubiks cube image', () => {
-        expect(wrapper.find('Rubiks Cube')).toBeTruthy()
+    it('should display Rubiks Cube image', () => {
+        expect(wrapper.find('img').attributes('alt')).toBe('Rubiks Cube')
     })
 
     it('should display Strikes from score board', () => {

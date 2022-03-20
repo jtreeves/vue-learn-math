@@ -29,4 +29,8 @@ describe('SingleQuestion article', () => {
     it('should display Questions heading', () => {
         expect(wrapper.find('h2').text()).toMatch('Questions')
     })
+
+    it('should display Question image', () => {
+        expect(wrapper.find('img').attributes('alt')).toBe('Question')
+    })
 })

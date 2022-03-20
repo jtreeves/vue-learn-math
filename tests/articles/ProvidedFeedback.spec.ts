@@ -29,4 +29,12 @@ describe('ProvidedFeedback article', () => {
     it('should display Feedback heading', () => {
         expect(wrapper.find('h2').text()).toMatch('Feedback')
     })
+
+    it('should display Feedback for Correct Answer image', () => {
+        expect(wrapper.findAll('img')[0].attributes('alt')).toBe('Feedback for Correct Answer')
+    })
+
+    it('should display Feedback for Incorrect Answer image', () => {
+        expect(wrapper.findAll('img')[1].attributes('alt')).toBe('Feedback for Incorrect Answer')
+    })
 })

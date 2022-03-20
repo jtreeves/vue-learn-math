@@ -18,8 +18,8 @@ describe('HomePage view', () => {
         expect(wrapper.text()).toMatch('Home')
     })
 
-    it('should display Rubiks cube image', () => {
-        expect(wrapper.find('Rubiks Cube')).toBeTruthy()
+    it('should display Rubiks Cube image', () => {
+        expect(wrapper.find('img').attributes('alt')).toBe('Rubiks Cube')
     })
 
     it('should display introductory text', () => {
