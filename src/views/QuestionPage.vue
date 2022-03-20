@@ -39,6 +39,7 @@
 <script setup lang="ts">
     import {
         onMounted,
+        onUnmounted,
         computed,
         ComputedRef
     } from 'vue'
@@ -47,6 +48,7 @@
         IFeedbackStyling
     } from '@/interfaces'
     import playTime from '@/utilities/playTime'
+    import resetGame from '@/utilities/resetGame'
     import time from '@/store/time'
     import status from '@/store/status'
     import useQuestion from '@/composables/useQuestion'
@@ -81,6 +83,11 @@
 
     onMounted(() => {
         playTime(wasAnswered)
+    })
+
+    onUnmounted(() => {
+        wasAnswered.value = true
+        setTimeout(resetGame, 1000)
     })
 
     useWatchers(wasAnswered)
