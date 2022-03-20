@@ -15,7 +15,7 @@
         color: #2c3e50;
         min-height: 100vh;
         display: grid;
-        grid-template-rows: 100px auto 113px;
+        grid-template-rows: 100px auto 115px;
     }
 
     body {

@@ -12,12 +12,12 @@
 <style scoped>
     footer {
         display: flex;
-        color: #ccc;
+        color: #666;
         justify-content: center;
         width: 100%;
         margin-top: 50px;
         margin-bottom: 50px;
-        font-size: 13px;
-        line-height: 13px;
+        font-size: 15px;
+        line-height: 15px;
     }
 </style>
