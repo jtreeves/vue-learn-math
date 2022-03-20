@@ -5,7 +5,11 @@ import {
 import {
     ComponentPublicInstance
 } from 'vue'
+import router from '@/router'
+import config from '../index'
 import AppHeader from '@/elements/AppHeader.vue'
+
+config.global.plugins = [router]
 
 describe('AppHeader element', () => {
     const wrapper: VueWrapper<ComponentPublicInstance> = mount(AppHeader)
@@ -16,17 +20,5 @@ describe('AppHeader element', () => {
 
     it('should display Rubiks Cube image', () => {
         expect(wrapper.find('img').attributes('alt')).toBe('Rubiks Cube')
-    })
-
-    it('should display Strikes from score board', () => {
-        expect(wrapper.text()).toMatch('Strikes')
-    })
-
-    it('should display Time from score board', () => {
-        expect(wrapper.text()).toMatch('Time')
-    })
-
-    it('should display Score from score board', () => {
-        expect(wrapper.text()).toMatch('Score')
     })
 })

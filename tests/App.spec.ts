@@ -28,18 +28,6 @@ describe('App component', () => {
         expect(wrapper.text()).toMatch('Math Attack!')
     })
 
-    it('should display Strikes from score board', () => {
-        expect(wrapper.text()).toMatch('Strikes')
-    })
-
-    it('should display Time from score board', () => {
-        expect(wrapper.text()).toMatch('Time')
-    })
-
-    it('should display Score from score board', () => {
-        expect(wrapper.text()).toMatch('Score')
-    })
-
     it('should display copyright symbol in footer', () => {
         expect(wrapper.text()).toMatch('©')
     })
