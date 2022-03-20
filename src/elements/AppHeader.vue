@@ -76,4 +76,11 @@
         align-items: center;
         gap: 30px;
     }
+
+    @media screen and (max-width: 1000px) {
+        header {
+            flex-direction: column;
+            border-bottom: none;
+        }
+    }
 </style>
