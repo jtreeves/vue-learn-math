@@ -41,6 +41,12 @@ describe('useQuestion composable', () => {
         expect(typeof composable.level.value).toBe('number')
     })
 
+    it('should provide an object called timerId with a value of type number as a property on the returned object', () => {
+        expect(composable).toHaveProperty('timerId')
+        expect(typeof composable.timerId).toBe('object')
+        expect(typeof composable.timerId.value).toBe('number')
+    })
+
     it('should provide an object called selection with a value of type number as a property on the returned object', () => {
         expect(composable).toHaveProperty('selection')
         expect(typeof composable.selection).toBe('object')

@@ -15,6 +15,7 @@ import resetGame from '@/utilities/resetGame'
 import playTime from '@/utilities/playTime'
 
 function useQuestion(): QuestionComposable {
+    const timerId: Ref<number> = ref(NaN)
     const selectedChoice: Ref<number> = ref(NaN)
     const wasAnswered: Ref<boolean> = ref(false)
     const wasCorrect: Ref<boolean> = ref(false)
@@ -69,13 +70,14 @@ function useQuestion(): QuestionComposable {
         randomChoices.value = updatedRandoms
         wasAnswered.value = false
         selectedChoice.value = NaN
-        playTime(wasAnswered)
+        playTime(timerId, wasAnswered)
     }
 
     function showAnswer(
         choice: number,
         isCorrect: boolean
     ): void {
+        clearInterval(timerId.value)
         const answer: IAnswer = {
             type: type.value,
             level: level.value,
@@ -100,6 +102,7 @@ function useQuestion(): QuestionComposable {
         answer: correctAnswer,
         selection: selectedChoice,
         level,
+        timerId,
         wasAnswered,
         wasCorrect,
         determineCorrect,

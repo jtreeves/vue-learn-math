@@ -66,6 +66,7 @@ interface QuestionComposable {
     answer: Ref<number>
     selection: Ref<number>
     level: Ref<number>
+    timerId: Ref<number>
     wasAnswered: Ref<boolean>
     wasCorrect: Ref<boolean>
     updateQuestion(): void

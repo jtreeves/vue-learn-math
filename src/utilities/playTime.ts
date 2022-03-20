@@ -4,16 +4,17 @@ import {
 import time from '@/store/time'
 
 function playTime(
+    timerId: Ref<number>,
     wasAnswered: Ref<boolean>
 ): void {
     time.reset()
 
-    const id: number = setInterval(
+    timerId.value = setInterval(
         () => {
             time.decrement()
 
             if (time.value === 0 || wasAnswered.value) {
-                clearInterval(id)
+                clearInterval(timerId.value)
             }
         }, 
         1000

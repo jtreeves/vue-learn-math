@@ -18,8 +18,9 @@ describe('playTime utility', () => {
     })
 
     it('should run setInterval once with intervals every 1 second when invoke playTime', () => {
+        const timerId: Ref<number> = ref(NaN)
         const wasAnswered: Ref<boolean> = ref(false)
-        playTime(wasAnswered)
+        playTime(timerId, wasAnswered)
         
         expect(setInterval).toHaveBeenCalledTimes(1)
         expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000)

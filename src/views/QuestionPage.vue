@@ -62,6 +62,7 @@
         answer,
         selection,
         level,
+        timerId,
         wasAnswered,
         wasCorrect,
         determineCorrect,
@@ -83,11 +84,11 @@
 
     onMounted(() => {
         resetGame()
-        playTime(wasAnswered)
+        playTime(timerId, wasAnswered)
     })
 
     onUnmounted(() => {
-        wasAnswered.value = true
+        clearInterval(timerId.value)
         setTimeout(resetGame, 1000)
     })
 
