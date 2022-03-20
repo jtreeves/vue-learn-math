@@ -15,12 +15,38 @@
             </RouterLink>
         </section>
 
-        <ScoreBoard />
+        <ScoreBoard v-if="shouldShow" />
     </header>
 </template>
 
 <script setup lang="ts">
+    import {
+        ref,
+        Ref,
+        watch
+    } from 'vue'
+    import {
+        useRoute,
+        RouteLocationNormalizedLoaded
+    } from 'vue-router'
     import ScoreBoard from './ScoreBoard.vue'
+
+    const route: RouteLocationNormalizedLoaded = useRoute()
+    const shouldShow: Ref<boolean> = ref(false)
+
+    watch(() => route.path, (newPath, oldPath) => {
+        if (
+            route.path === '/question' && 
+            newPath !== oldPath
+        ) {
+            shouldShow.value = true
+        } else if (
+            route.path !== '/question' && 
+            newPath !== oldPath
+        ) {
+            shouldShow.value = false
+        }
+    })
 </script>
 
 <style scoped>
