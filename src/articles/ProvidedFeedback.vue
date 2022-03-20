@@ -46,4 +46,11 @@
         width: 400px;
         object-fit: cover;
     }
+
+    @media screen and (max-width: 750px) {
+        div {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
 </style>
