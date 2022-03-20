@@ -24,5 +24,7 @@
     article {
         padding: 10px;
         border: 3px solid darkblue;
+        border-radius: 4px;
+        width: 125px;
     }
 </style>
