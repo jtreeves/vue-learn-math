@@ -1,4 +1,5 @@
 import score from '@/store/score'
+import time from '@/store/time'
 
 function updateScore(
     level: number,
@@ -21,6 +22,10 @@ function updateScore(
             break
         default:
             points = 10
+    }
+
+    if (time.value > 5) {
+        points *= 2
     }
 
     if (wasCorrect) {
