@@ -12,12 +12,12 @@
             <img
                 alt="Feedback for Correct Answer"
                 src="@/assets/correct.png"
-            >
+            />
 
             <img
                 alt="Feedback for Incorrect Answer"
                 src="@/assets/incorrect.png"
-            >
+            />
         </div>
 
         <p>

@@ -11,7 +11,7 @@
         <img
             alt="Question"
             src="@/assets/question.png"
-        >
+        />
 
         <p>
             The difficulty of each question will vary based on your previous answers. The better you do, the harder the questions will become. Get one wrong, and the next question you see should be easier.

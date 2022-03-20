@@ -5,9 +5,11 @@
         <img
             alt="Rubiks Cube"
             src="@/assets/rubiks.jpg"
-        >
+        />
 
-        <p>Test your arithmetic skills with this online game.</p>
+        <p>
+            Test your arithmetic skills with this online game.
+        </p>
 
         <aside>
             <GenericButton

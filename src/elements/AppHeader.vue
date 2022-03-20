@@ -5,7 +5,7 @@
                 <img
                     alt="Rubiks Cube"
                     src="@/assets/rubiks.jpg"
-                >
+                />
             </RouterLink>
 
             <RouterLink to="/home">

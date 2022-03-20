@@ -18,12 +18,17 @@ function useInstructions(): InstructionsComposable {
     const currentStep: string = String(route.params.step)
     const step: Ref<number> = ref(parseInt(currentStep))
 
+    function scrollToTop(): void {
+        window.scrollTo(0, 0)
+    }
+
     function loadNext(): void {
         const nextStep: number = step.value + 1
         const nextRoute: string = '/instructions/' + nextStep
 
         step.value = nextStep
         router.push(nextRoute)
+        scrollToTop()
     }
 
     function loadPrevious(): void {
@@ -32,6 +37,7 @@ function useInstructions(): InstructionsComposable {
 
         step.value = previousStep
         router.push(previousRoute)
+        scrollToTop()
     }
 
     return { 
