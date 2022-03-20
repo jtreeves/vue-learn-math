@@ -1,6 +1,6 @@
 # Learn Math
 
-*Repository for the [Learn Math](https://vue-learn-math.netlify.app/home) online game*
+*Repository for the [Learn Math](https://vue-learn-math.netlify.app) online game*
 
 **Contents**
 
@@ -28,7 +28,7 @@ This is a simple online game for reviewing basic arithmetic concepts. It's writt
 1. Run `npm run serve` within your local directory
 2. View the live version of the site at `http://localhost:8080`
 
-Alternatively, you may use the live version of the [Learn Math](https://vue-learn-math.netlify.app/home) app, deployed via Netlify
+Alternatively, you may use the live version of the [Learn Math](https://vue-learn-math.netlify.app) app, deployed via Netlify
 
 ## Features
 
