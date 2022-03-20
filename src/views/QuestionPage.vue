@@ -112,12 +112,14 @@
     }
 
     .red {
-        padding: 5px;
+        padding: 10px;
         border: 5px solid red;
+        border-radius: 4px;
     }
 
     .green {
-        padding: 5px;
+        padding: 10px;
         border: 5px solid green;
+        border-radius: 4px;
     }
 </style>
